@@ -38,15 +38,6 @@
 				</div>
 				<h3>Empresario</h3>
 		 	<div> 
-						<g:form url="[resource:usuarioEmpresarioInstance, controller:'UsuarioEmpresario', action:'save']">
-						<fieldset class="form">
-							<g:render template="../usuarioEmpresario/form" />
-						</fieldset>
-						<fieldset class="buttons">
-							<g:submitButton name="create" class="save"
-								value="${message(code: 'default.button.create.label', default: 'Create')}" />
-						</fieldset>
-					</g:form>
 				</div>
 				<h3>Gestor Cultural</h3>
 				<div>
