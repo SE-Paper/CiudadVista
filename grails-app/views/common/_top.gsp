@@ -27,13 +27,28 @@
 				</div>
 			</td>
 			<td width="400">
-				<div id="searchT">
-					<form id="searchbox" action="">
+		<!--<div id="searchT">
+					<form id="searchbox" action="../search">
 						<input id="search" type="text" placeholder="Escriba aquí">
 						<input id="submit" type="submit" value="Buscar">
 					</form>
 				</div>
-			</td>
+				-->
+				 <fieldset class="form">
+    				<g:form url="[controller:'Search', action:'search']" method="GET">
+       					 <div class="fieldcontain">
+        		    		<label for="query">Buscar:</label>
+          		 			 <g:textField name="query" placeholder="Escriba aquí" value="${params.query}	"/>
+        				</div>
+    				</g:form>
+				</fieldset>			
+				 
+				<!--<div id="searchT">
+					<form id="searchbox" action="Search">
+						<input id="search" type="text" placeholder="Escriba aquí" value ="${params.query}" >
+						<input id="submit" type="submit" value="Buscar">
+					</form>
+				</div>-->	</td>
 			<td width="80">
 				<div id="searchboxB">
 					<input type="image"
