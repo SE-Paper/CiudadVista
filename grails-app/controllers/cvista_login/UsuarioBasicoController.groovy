@@ -14,6 +14,11 @@ class UsuarioBasicoController {
         params.max = Math.min(max ?: 10, 100)
         respond UsuarioBasico.list(params), model:[usuarioBasicoInstanceCount: UsuarioBasico.count()]
     }
+	
+	def index2(Integer max) {
+		params.max = Math.min(max ?: 10, 100)
+		respond UsuarioBasico.list(params), model:[usuarioBasicoInstanceCount: UsuarioBasico.count()]
+	}
 
     def show(UsuarioBasico usuarioBasicoInstance) {
         respond usuarioBasicoInstance
@@ -22,6 +27,10 @@ class UsuarioBasicoController {
     def create() {
         respond new UsuarioBasico(params)
     }
+	
+	def create2() {
+		respond new UsuarioBasico(params)
+	}
 
     @Transactional
     def save(UsuarioBasico usuarioBasicoInstance) {

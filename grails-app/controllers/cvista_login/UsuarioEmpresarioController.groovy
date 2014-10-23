@@ -14,6 +14,11 @@ class UsuarioEmpresarioController {
         params.max = Math.min(max ?: 10, 100)
         respond UsuarioEmpresario.list(params), model:[usuarioEmpresarioInstanceCount: UsuarioEmpresario.count()]
     }
+	
+	def index2(Integer max) {
+		params.max = Math.min(max ?: 10, 100)
+		respond UsuarioEmpresario.list(params), model:[usuarioEmpresarioInstanceCount: UsuarioEmpresario.count()]
+	}
 
     def show(UsuarioEmpresario usuarioEmpresarioInstance) {
         respond usuarioEmpresarioInstance
@@ -22,7 +27,9 @@ class UsuarioEmpresarioController {
     def create() {
         respond new UsuarioEmpresario(params)
     }
-
+	def create2() {
+		respond new UsuarioEmpresario(params)
+	}
     @Transactional
     def save(UsuarioEmpresario usuarioEmpresarioInstance) {
         if (usuarioEmpresarioInstance == null) {

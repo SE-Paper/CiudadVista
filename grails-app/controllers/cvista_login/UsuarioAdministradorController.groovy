@@ -22,6 +22,25 @@ class UsuarioAdministradorController {
     def create() {
         respond new UsuarioAdministrador(params)
     }
+	
+	def login = {
+	}
+
+	def doLogin = {
+		def user = UsuarioAdministrador.findWhere(email:params['email'], password:params['password'])
+		session.user = user
+		session.email = params['email']
+		if (user)
+			redirect(controller:'panel',action:'main')
+		else
+			redirect(url:"/admin")
+	}
+
+	def logout = {
+		session.invalidate()
+		redirect(url:"/admin")
+	}
+
 
     @Transactional
     def save(UsuarioAdministrador usuarioAdministradorInstance) {
