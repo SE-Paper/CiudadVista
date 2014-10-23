@@ -14,15 +14,24 @@ class UsuarioAdministradorController {
         params.max = Math.min(max ?: 10, 100)
         respond UsuarioAdministrador.list(params), model:[usuarioAdministradorInstanceCount: UsuarioAdministrador.count()]
     }
-
+	def index2(Integer max) {
+		params.max = Math.min(max ?: 10, 100)
+		respond UsuarioAdministrador.list(params), model:[usuarioAdministradorInstanceCount: UsuarioAdministrador.count()]
+	}
     def show(UsuarioAdministrador usuarioAdministradorInstance) {
         respond usuarioAdministradorInstance
     }
+	
+	def show2(UsuarioAdministrador usuarioAdministradorInstance) {
+		respond usuarioAdministradorInstance
+	}
 
     def create() {
         respond new UsuarioAdministrador(params)
     }
-	
+	def create2() {
+		respond new UsuarioAdministrador(params)
+	}
 	def login = {
 	}
 
@@ -66,9 +75,36 @@ class UsuarioAdministradorController {
         }
     }
 
+	def save2(UsuarioAdministrador usuarioAdministradorInstance) {
+		if (usuarioAdministradorInstance == null) {
+			notFound()
+			return
+		}
+
+		if (usuarioAdministradorInstance.hasErrors()) {
+			respond usuarioAdministradorInstance.errors, view:'create2'
+			return
+		}
+
+		usuarioAdministradorInstance.password = usuarioAdministradorInstance.password.encodeAsMD5()
+		usuarioAdministradorInstance.save flush:true
+
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.created.message', args: [message(code: 'usuarioAdministrador.label', default: 'UsuarioAdministrador'), usuarioAdministradorInstance.id])
+				redirect usuarioAdministradorInstance
+			}
+			'*' { respond usuarioAdministradorInstance, [status: CREATED] }
+		}
+	}
     def edit(UsuarioAdministrador usuarioAdministradorInstance) {
         respond usuarioAdministradorInstance
     }
+	
+	def edit2(UsuarioAdministrador usuarioAdministradorInstance) {
+		respond usuarioAdministradorInstance
+	}
+
 
     @Transactional
     def update(UsuarioAdministrador usuarioAdministradorInstance) {
@@ -93,7 +129,28 @@ class UsuarioAdministradorController {
             '*'{ respond usuarioAdministradorInstance, [status: OK] }
         }
     }
+	def update2(UsuarioAdministrador usuarioAdministradorInstance) {
+		if (usuarioAdministradorInstance == null) {
+			notFound()
+			return
+		}
 
+		if (usuarioAdministradorInstance.hasErrors()) {
+			respond usuarioAdministradorInstance.errors, view:'edit2'
+			return
+		}
+
+		usuarioAdministradorInstance.password = usuarioAdministradorInstance.password.encodeAsMD5()
+		usuarioAdministradorInstance.save flush:true
+
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.updated.message', args: [message(code: 'UsuarioAdministrador.label', default: 'UsuarioAdministrador'), usuarioAdministradorInstance.id])
+				redirect usuarioAdministradorInstance
+			}
+			'*'{ respond usuarioAdministradorInstance, [status: OK] }
+		}
+	}
     @Transactional
     def delete(UsuarioAdministrador usuarioAdministradorInstance) {
 
@@ -112,7 +169,23 @@ class UsuarioAdministradorController {
             '*'{ render status: NO_CONTENT }
         }
     }
-
+	def delete2(UsuarioAdministrador usuarioAdministradorInstance) {
+		
+				if (usuarioAdministradorInstance == null) {
+					notFound()
+					return
+				}
+		
+				usuarioAdministradorInstance.delete flush:true
+		
+				request.withFormat {
+					form multipartForm {
+						flash.message = message(code: 'default.deleted.message', args: [message(code: 'UsuarioAdministrador.label', default: 'UsuarioAdministrador'), usuarioAdministradorInstance.id])
+						redirect action:"index2", method:"GET"
+					}
+					'*'{ render status: NO_CONTENT }
+				}
+			}
     protected void notFound() {
         request.withFormat {
             form multipartForm {

@@ -7,8 +7,8 @@
 				<ul class="nav nav-second-level">
 						<li><a href="#">Administradores<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><g:link controller="admin" action="create">Crear</g:link></li>
-							<li><g:link controller="admin" action="index">Ver lista</g:link></li>
+								<li><g:link controller="usuarioAdministrador" action="create2">Crear</g:link></li>
+							<li><g:link controller="usuarioAdministrador" action="index2">Ver lista</g:link></li>
 						</ul></li>
 						</ul>
 			
