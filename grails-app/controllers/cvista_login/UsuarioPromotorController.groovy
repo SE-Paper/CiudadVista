@@ -36,6 +36,8 @@ class UsuarioPromotorController {
         }
 
         usuarioPromotorInstance.save flush:true
+		usuarioPromotorInstance.password = usuarioPromotorInstance.password.encodeAsMD5()
+		
 
         request.withFormat {
             form multipartForm {
@@ -63,6 +65,7 @@ class UsuarioPromotorController {
         }
 
         usuarioPromotorInstance.save flush:true
+		usuarioPromotorInstance.password = usuarioPromotorInstance.password.encodeAsMD5()
 
         request.withFormat {
             form multipartForm {

@@ -36,6 +36,9 @@ class UsuarioController {
         }
 
         usuarioInstance.save flush:true
+		usuarioInstance.password = usuarioInstance.password.encodeAsMD5()
+		
+		
 
         request.withFormat {
             form multipartForm {
@@ -63,7 +66,9 @@ class UsuarioController {
         }
 
         usuarioInstance.save flush:true
-
+		usuarioInstance.password = usuarioInstance.password.encodeAsMD5()
+		
+		
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Usuario.label', default: 'Usuario'), usuarioInstance.id])

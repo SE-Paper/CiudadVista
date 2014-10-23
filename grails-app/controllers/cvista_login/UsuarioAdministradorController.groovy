@@ -35,7 +35,8 @@ class UsuarioAdministradorController {
             return
         }
 
-        usuarioAdministradorInstance.save flush:true
+		usuarioAdministradorInstance.password = usuarioAdministradorInstance.password.encodeAsMD5()
+		usuarioAdministradorInstance.save flush:true
 
         request.withFormat {
             form multipartForm {
@@ -62,7 +63,8 @@ class UsuarioAdministradorController {
             return
         }
 
-        usuarioAdministradorInstance.save flush:true
+		usuarioAdministradorInstance.password = usuarioAdministradorInstance.password.encodeAsMD5()
+		usuarioAdministradorInstance.save flush:true
 
         request.withFormat {
             form multipartForm {
