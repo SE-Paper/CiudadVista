@@ -37,7 +37,7 @@
         </div>
         <!-- Powered by Text End-->
         <!-- Follow Social Icons Start-->
-        <div class="social part3"> <a href="http://facebook.com/harnishdesign" target="_blank"><img src="image/facebook.png" alt="Facebook" title="Facebook"></a> <a href="https://twitter.com/#!/harnishdesign" target="_blank"><img src="image/twitter.png" alt="Twitter" title="Twitter"> </a> <a href="#" target="_blank"> <img src="image/googleplus.png" alt="Google+" title="Google+"> </a> <a href="#" target="_blank"> <img src="image/pinterest.png" alt="Pinterest" title="Pinterest"> </a> <a href="#" target="_blank"> <img src="image/rss.png" alt="RSS" title="RSS"> </a> <a href="http://www.vimeo.com/#" target="_blank"> <img src="image/vimeo.png" alt="Vimeo" title="Vimeo"> </a> </div>
+        <div class="social part3"> <a href="http://facebook.com/harnishdesign" target="_blank"><img src="${resource(dir: 'image', file: 'facebook.png')}"/></a> <a href="https://twitter.com/#!/harnishdesign" target="_blank"><img src="${resource(dir: 'image', file: 'twitter.png')}"/> </a> <a href="#" target="_blank"> <img src="${resource(dir: 'image', file: 'googleplus.png')}"/> </a> <a href="#" target="_blank"> <img src="${resource(dir: 'image', file: 'pinterest.png')}"/> </a> <a href="#" target="_blank"> <img src="${resource(dir: 'image', file: 'rss.png')}"/> </a> <a href="http://www.vimeo.com/#" target="_blank"><img src="${resource(dir: 'image', file: 'vimeo.png')}"/> </a> </div>
         <!-- Follow Social Icons End-->
         <div class="clear"></div>
       </div>

@@ -36,9 +36,7 @@
       <div id="content">
         <!-- Nivo Slider Start -->
         <section class="slider-wrapper">
-        					
-        
-          <div id="slideshow" class="nivoSlider"> <a class="nivo-imageLink" href="#">  <img src="${resource(dir: 'image/slider/', file: 'slide-1.jpg')}"/>  </a> <a class="nivo-imageLink" href="#"><img src="image/slider/slide-2.jpg" alt="slide-2" /></a> <a class="nivo-imageLink" href="#"><img src="image/slider/slide-3.jpg" alt="slide-3" /></a> </div>
+          <div id="slideshow" class="nivoSlider"> <a class="nivo-imageLink" href="#">  <img src="${resource(dir: 'slider', file: 'slide-1.jpg')}"/>  </a> <a class="nivo-imageLink" href="#"><img src="${resource(dir: 'slider', file: 'slide-2.jpg')}"/></a> <a class="nivo-imageLink" href="#"><img src="${resource(dir: 'slider', file: 'slide-3.jpg')}"/></a> </div>
         </section>
         <script type="text/javascript"><!--
 $(document).ready(function() {
@@ -59,7 +57,7 @@ $(document).ready(function() {
                 <ul class="slides">
                   <li>
                     <div class="slide-inner">
-                      <div class="image"><a href="product.html"><img src="image/product/iphone_1-210x210.jpg" alt="iPhone 4s" /></a></div>
+                      <div class="image"><a href="product.html"><img src="${resource(dir: 'product', file: 'iphone_1-210x210.jpg')}"/></a></div>
                       <div class="name"><a href="product.html">iPhone 4s</a></div>
                       <div class="price"> $120.68 </div>
                       <div class="cart">
@@ -114,7 +112,7 @@ $(document).ready(function() {
                 <ul class="slides">
                   <li>
                     <div class="slide-inner">
-                      <div class="image"><a href="product.html"><img src="image/product/lotto-sports-shoes-white-210x210.jpg" alt="Lotto Sports Shoes" /></a></div>
+                      <div class="image"><a href="product.html"> <img src="${resource(dir: 'product', file: 'lotto-sports-shoes-white-210x210.jpg')}"/> </a></div>
                       <div class="name"><a href="http://localhost/polishop/index.php?route=product/product&amp;product_id=43">Lotto Sports Shoes</a></div>
                       <div class="price"> $589.50 </div>
                       <div class="cart">
@@ -134,7 +132,7 @@ $(document).ready(function() {
                 <ul class="slides">
                   <li>
                     <div class="slide-inner">
-                      <div class="image"><a href="product.html"><img src="image/product/ipod_touch_1-210x210.jpg" alt="Sunglass" /></a></div>
+                      <div class="image"><a href="product.html"><img src="${resource(dir: 'product', file: 'ipod_touch_1-210x210.jpg')}"/></a></div>
                       <div class="name"><a href="product.html">Sunglass</a></div>
                       <div class="price"> $1,177.00 </div>
                       <div class="cart">
@@ -154,7 +152,7 @@ $(document).ready(function() {
                 <ul class="slides">
                   <li>
                     <div class="slide-inner">
-                      <div class="image"><a href="product.html"><img src="image/product/ipod_touch_1-210x210.jpg" alt="Sunglass" /></a></div>
+                      <div class="image"><a href="product.html"><img src="${resource(dir: 'product', file: 'ipod_touch_1-210x210.jpg')}"/></a></div>
                       <div class="name"><a href="product.html">Sunglass</a></div>
                       <div class="price"> $1,177.00 </div>
                       <div class="cart">
