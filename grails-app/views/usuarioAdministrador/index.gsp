@@ -44,40 +44,6 @@
 					
 					</tr>
 				</g:each>
-				
-				<table>
-				<tr>
-					<td>
-						<button class="buttons" name="buttonCrudUsuarioAdministrador">
- 						<g:link class="controller" controller="UsuarioAdministrador">
- 						CRUD Usuario Administrador
- 						</g:link>
-						</button>
-					</td>
-					<td>
-						<button class="buttons" name="buttonCrudUsuarioBasico">
- 						<g:link class="controller" controller="UsuarioBasico">
- 						CRUD Usuario Básico
- 						</g:link>
- 						</button>
- 					</td>	
-					<td>
-						<button class="buttons" name="buttonCrudUsuarioEmpresario">
- 						<g:link class="controller" controller="UsuarioEmpresario">
- 						CRUD Usuario Empresario
- 						</g:link>
- 						</button>
- 					</td>
-					<td>	
-						<button class="buttons" name="buttonCrudUsuarioPromotor">
- 						<g:link class="controller" controller="UsuarioPromotor">
- 						CRUD Usuario Promotor
- 						</g:link>
- 						</button>
- 					</td>	
-				</tr>
-				</table>
-				
 				</tbody>
 			</table>
 			<div class="pagination">

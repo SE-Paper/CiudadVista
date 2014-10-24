@@ -65,6 +65,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: usuarioEmpresarioInstance, field: 'picture', 'error')} ">
+	<label for="picture">
+		<g:message code="usuarioEmpresario.picture.label" default="Picture" />
+		
+	</label>
+	<input type="file" id="picture" name="picture" />
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: usuarioEmpresarioInstance, field: 'servicios', 'error')} ">
 	<label for="servicios">
 		<g:message code="usuarioEmpresario.servicios.label" default="Servicios" />

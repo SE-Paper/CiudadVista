@@ -1,217 +1,130 @@
+$(document).ready(function(){
+
+/******** Accordion **********/
+$('.accordion-heading, .checkout-heading').live('click', function() {
+	$('.accordion-content, .checkout-content').slideUp('slow');
+	$(this).parent().find('.accordion-content, .checkout-content').slideDown('slow');
+});
+
+/*`Scroll to top */
+$(function () {
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 150) {
+				$('#back-top').fadeIn();
+			} else {
+				$('#back-top').fadeOut();
+			}
+		});
+		});
+jQuery('.backtotop').click(function(){
+	jQuery('html, body').animate({scrollTop:0}, 'slow');
+});
+
+/******** Navigation Menu ********/
+$('#menu > span').click(function () {
+	  $(this).toggleClass("active");  
+	  $(this).parent().find("> ul").slideToggle('medium');
+	});
+
+$('#menu.m-menu > ul > li.categories > div > .column > div').before('<span class="more"></span>');
+		$('span.more').click(function () {
+			$(this).next().slideToggle('fast');
+			$(this).toggleClass('plus');
+			
+				});
+
+/******** Footer Link ********/
+$("#footer h3").click(function () {
+			$screensize = $(window).width();
+			if ($screensize < 801) {
+				$(this).toggleClass("active");  
+				$(this).parent().find("ul").slideToggle('medium');
+			}
+		});
+/******** plus mines button in qty ********/
+$(".qtyBtn").click(function(){
+		if($(this).hasClass("plus")){
+			var qty = $("#qty").val();
+			qty++;
+			$("#qty").val(qty);
+		}else{
+			var qty = $("#qty").val();
+			qty--;
+			if(qty>0){
+				$("#qty").val(qty);
+			}
+		}
+	});	
+
+/******** Language and Currency Dropdowns ********/
+$('#currency, #language').mouseover(function() {
+			$(this).find('> ul').slideDown('fast');
+			$(this).bind('mouseleave', function() {
+				$(this).find('> ul').slideUp('fast');
+			});
+		});
+
+/******** Ajax Cart **********/
+	$('#cart > .heading a').live('click', function() {
+		$('#cart').addClass('active');		
+		$('#cart').live('mouseleave', function() {
+			$(this).removeClass('active');
+		});
+	});
+	
+/******** Mega Menu **********/
+	$('#menu ul > li > a + div').each(function(index, element) {
+		// IE6 & IE7 Fixes
+		if ($.browser.msie && ($.browser.version == 7 || $.browser.version == 6)) {
+			var category = $(element).find('a');
+			var columns = $(element).find('ul').length;
+			
+			$(element).css('width', (columns * 143) + 'px');
+			$(element).find('ul').css('float', 'left');
+		}		
+		
+		var menu = $('#menu').offset();
+		var dropdown = $(this).parent().offset();
+		
+		i = (dropdown.left + $(this).outerWidth()) - (menu.left + $('#menu').outerWidth());
+		
+		if (i > 0) {
+			$(this).css('margin-left', '-' + (i + 5) + 'px');
+		}
+	});
+	
+/********Category Accordion **********/
+$(document).ready(function() {
+	$('#cat_accordion').cutomAccordion({
+		classExpand : 'custom_id20',
+		menuClose: false,
+		autoClose: true,
+		saveState: false,
+		disableLink: false,		
+		autoExpand: true
+	});
+});
 
 
 
-/*=============================================================
-    Authour URI: www.binarycart.com
-    License: Commons Attribution 3.0
+/******** Carousel **********/
+$('#carousel ul').jcarousel({
+	vertical: false,
+	visible: 5,
+	scroll: 3
+});
 
-    http://creativecommons.org/licenses/by/3.0/
+/******** Tabs 
+$('#tabs a').tabs();**********/
 
-    100% To use For Personal And Commercial Use.
-    IN EXCHANGE JUST GIVE US CREDITS AND TELL YOUR FRIENDS ABOUT US
-   
-    ========================================================  */
+/******** Colorbox **********/
 
-
-(function ($) {
-    "use strict";
-    var mainApp = {
-
-        main_fun: function () {
-            /*====================================
-            METIS MENU 
-            ======================================*/
-            $('#main-menu').metisMenu();
-
-            /*====================================
-              LOAD APPROPRIATE MENU BAR
-           ======================================*/
-            $(window).bind("load resize", function () {
-                if ($(this).width() < 768) {
-                    $('div.sidebar-collapse').addClass('collapse')
-                } else {
-                    $('div.sidebar-collapse').removeClass('collapse')
-                }
-            });
-
-            /*====================================
-            MORRIS BAR CHART
-         ======================================*/
-            Morris.Bar({
-                element: 'morris-bar-chart',
-                data: [{
-                    y: '2006',
-                    a: 100,
-                    b: 90
-                }, {
-                    y: '2007',
-                    a: 75,
-                    b: 65
-                }, {
-                    y: '2008',
-                    a: 50,
-                    b: 40
-                }, {
-                    y: '2009',
-                    a: 75,
-                    b: 65
-                }, {
-                    y: '2010',
-                    a: 50,
-                    b: 40
-                }, {
-                    y: '2011',
-                    a: 75,
-                    b: 65
-                }, {
-                    y: '2012',
-                    a: 100,
-                    b: 90
-                }],
-                xkey: 'y',
-                ykeys: ['a', 'b'],
-                labels: ['Series A', 'Series B'],
-                hideHover: 'auto',
-                resize: true
-            });
-
-            /*====================================
-          MORRIS DONUT CHART
-       ======================================*/
-            Morris.Donut({
-                element: 'morris-donut-chart',
-                data: [{
-                    label: "Download Sales",
-                    value: 12
-                }, {
-                    label: "In-Store Sales",
-                    value: 30
-                }, {
-                    label: "Mail-Order Sales",
-                    value: 20
-                }],
-                resize: true
-            });
-
-            /*====================================
-         MORRIS AREA CHART
-      ======================================*/
-
-            Morris.Area({
-                element: 'morris-area-chart',
-                data: [{
-                    period: '2010 Q1',
-                    iphone: 2666,
-                    ipad: null,
-                    itouch: 2647
-                }, {
-                    period: '2010 Q2',
-                    iphone: 2778,
-                    ipad: 2294,
-                    itouch: 2441
-                }, {
-                    period: '2010 Q3',
-                    iphone: 4912,
-                    ipad: 1969,
-                    itouch: 2501
-                }, {
-                    period: '2010 Q4',
-                    iphone: 3767,
-                    ipad: 3597,
-                    itouch: 5689
-                }, {
-                    period: '2011 Q1',
-                    iphone: 6810,
-                    ipad: 1914,
-                    itouch: 2293
-                }, {
-                    period: '2011 Q2',
-                    iphone: 5670,
-                    ipad: 4293,
-                    itouch: 1881
-                }, {
-                    period: '2011 Q3',
-                    iphone: 4820,
-                    ipad: 3795,
-                    itouch: 1588
-                }, {
-                    period: '2011 Q4',
-                    iphone: 15073,
-                    ipad: 5967,
-                    itouch: 5175
-                }, {
-                    period: '2012 Q1',
-                    iphone: 10687,
-                    ipad: 4460,
-                    itouch: 2028
-                }, {
-                    period: '2012 Q2',
-                    iphone: 8432,
-                    ipad: 5713,
-                    itouch: 1791
-                }],
-                xkey: 'period',
-                ykeys: ['iphone', 'ipad', 'itouch'],
-                labels: ['iPhone', 'iPad', 'iPod Touch'],
-                pointSize: 2,
-                hideHover: 'auto',
-                resize: true
-            });
-
-            /*====================================
-    MORRIS LINE CHART
- ======================================*/
-            Morris.Line({
-                element: 'morris-line-chart',
-                data: [{
-                    y: '2006',
-                    a: 100,
-                    b: 90
-                }, {
-                    y: '2007',
-                    a: 75,
-                    b: 65
-                }, {
-                    y: '2008',
-                    a: 50,
-                    b: 40
-                }, {
-                    y: '2009',
-                    a: 75,
-                    b: 65
-                }, {
-                    y: '2010',
-                    a: 50,
-                    b: 40
-                }, {
-                    y: '2011',
-                    a: 75,
-                    b: 65
-                }, {
-                    y: '2012',
-                    a: 100,
-                    b: 90
-                }],
-                xkey: 'y',
-                ykeys: ['a', 'b'],
-                labels: ['Series A', 'Series B'],
-                hideHover: 'auto',
-                resize: true
-            });
-           
-     
-        },
-
-        initialization: function () {
-            mainApp.main_fun();
-
-        }
-
-    }
-    // Initializing ///
-
-    $(document).ready(function () {
-        mainApp.main_fun();
-    });
-
-}(jQuery));
+$('.colorbox').colorbox({
+			overlayClose: true,
+			opacity: 0.8,
+			maxHeight: 550,
+			maxWidth: 550,
+			width:'100%'
+		});
+/******** ================= ********/
+});

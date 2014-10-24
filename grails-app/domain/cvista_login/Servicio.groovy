@@ -10,6 +10,7 @@ class Servicio extends Componente{
 
 	Date fechaActivo
 	Date fechaInactivo
+	Byte [] picture
 
 	
 	static belogsTo = UsuarioEmpresario
@@ -17,6 +18,7 @@ class Servicio extends Componente{
 	static constraints = {
 		fechaActivo() 
 		fechaInactivo()
+		picture(nullable:true)
 	}
 	static mapping = { sort "fechaActivo":"desc" }
 }

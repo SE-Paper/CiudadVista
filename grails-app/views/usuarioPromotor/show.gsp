@@ -23,6 +23,33 @@
 			</g:if>
 			<ol class="property-list usuarioPromotor">
 			
+				<g:if test="${usuarioPromotorInstance?.email}">
+				<li class="fieldcontain">
+					<span id="email-label" class="property-label"><g:message code="usuarioPromotor.email.label" default="Email" /></span>
+					
+						<span class="property-value" aria-labelledby="email-label"><g:fieldValue bean="${usuarioPromotorInstance}" field="email"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${usuarioPromotorInstance?.password}">
+				<li class="fieldcontain">
+					<span id="password-label" class="property-label"><g:message code="usuarioPromotor.password.label" default="Password" /></span>
+					
+						<span class="property-value" aria-labelledby="password-label"><g:fieldValue bean="${usuarioPromotorInstance}" field="password"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${usuarioPromotorInstance?.activo}">
+				<li class="fieldcontain">
+					<span id="activo-label" class="property-label"><g:message code="usuarioPromotor.activo.label" default="Activo" /></span>
+					
+						<span class="property-value" aria-labelledby="activo-label"><g:formatBoolean boolean="${usuarioPromotorInstance?.activo}" /></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${usuarioPromotorInstance?.nombreApellido}">
 				<li class="fieldcontain">
 					<span id="nombreApellido-label" class="property-label"><g:message code="usuarioPromotor.nombreApellido.label" default="Nombre Apellido" /></span>
@@ -46,6 +73,13 @@
 					<span id="cedula-label" class="property-label"><g:message code="usuarioPromotor.cedula.label" default="Cedula" /></span>
 					
 						<span class="property-value" aria-labelledby="cedula-label"><g:fieldValue bean="${usuarioPromotorInstance}" field="cedula"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${usuarioPromotorInstance?.picture}">
+				<li class="fieldcontain">
+					<span id="picture-label" class="property-label"><g:message code="usuarioPromotor.picture.label" default="Picture" /></span>
 					
 				</li>
 				</g:if>

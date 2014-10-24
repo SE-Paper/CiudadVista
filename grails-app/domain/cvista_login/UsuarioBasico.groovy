@@ -13,7 +13,7 @@ class UsuarioBasico extends Usuario {
 	String pais
 	String departamento
 	String ciudad 
-	
+	Byte [] picture
 	
 	static constraints = {
 		nombre()
@@ -25,6 +25,7 @@ class UsuarioBasico extends Usuario {
 		pais()
 		departamento()
 		ciudad()
+		picture(nullable:true)
 	}
 
 	String toString(){

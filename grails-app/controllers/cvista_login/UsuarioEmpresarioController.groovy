@@ -14,11 +14,6 @@ class UsuarioEmpresarioController {
         params.max = Math.min(max ?: 10, 100)
         respond UsuarioEmpresario.list(params), model:[usuarioEmpresarioInstanceCount: UsuarioEmpresario.count()]
     }
-	
-	def index2(Integer max) {
-		params.max = Math.min(max ?: 10, 100)
-		respond UsuarioEmpresario.list(params), model:[usuarioEmpresarioInstanceCount: UsuarioEmpresario.count()]
-	}
 
     def show(UsuarioEmpresario usuarioEmpresarioInstance) {
         respond usuarioEmpresarioInstance
@@ -27,9 +22,7 @@ class UsuarioEmpresarioController {
     def create() {
         respond new UsuarioEmpresario(params)
     }
-	def create2() {
-		respond new UsuarioEmpresario(params)
-	}
+
     @Transactional
     def save(UsuarioEmpresario usuarioEmpresarioInstance) {
         if (usuarioEmpresarioInstance == null) {
@@ -43,9 +36,7 @@ class UsuarioEmpresarioController {
         }
 
         usuarioEmpresarioInstance.save flush:true
-		usuarioEmpresarioInstance.password = usuarioEmpresarioInstance.password.encodeAsMD5()
-		
-		
+
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'usuarioEmpresario.label', default: 'UsuarioEmpresario'), usuarioEmpresarioInstance.id])
@@ -72,8 +63,6 @@ class UsuarioEmpresarioController {
         }
 
         usuarioEmpresarioInstance.save flush:true
-		usuarioEmpresarioInstance.password = usuarioEmpresarioInstance.password.encodeAsMD5()
-		
 
         request.withFormat {
             form multipartForm {

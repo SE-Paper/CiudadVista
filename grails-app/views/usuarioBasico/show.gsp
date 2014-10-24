@@ -131,6 +131,13 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${usuarioBasicoInstance?.picture}">
+				<li class="fieldcontain">
+					<span id="picture-label" class="property-label"><g:message code="usuarioBasico.picture.label" default="Picture" /></span>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form url="[resource:usuarioBasicoInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
