@@ -22,7 +22,7 @@ class UsuarioEmpresario extends Usuario {
 		nombreEmpresa()
 		matriculaMercantil()
 		cedula(validator:{val,instance ->
-			def userClasses = Usuario.findAllByCedula(val);
+			def userClasses = UsuarioEmpresario.findAllByCedula(val);
 			if(userClasses){
 				for(Usuario userClass : userClasses){
 					if(userClass.class.equals(instance.class) && instance.version == null){

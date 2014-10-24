@@ -75,6 +75,7 @@ class UsuarioAdministradorController {
         }
     }
 
+	@Transactional
 	def save2(UsuarioAdministrador usuarioAdministradorInstance) {
 		if (usuarioAdministradorInstance == null) {
 			notFound()
@@ -106,7 +107,6 @@ class UsuarioAdministradorController {
 	}
 
 
-    @Transactional
     def update(UsuarioAdministrador usuarioAdministradorInstance) {
         if (usuarioAdministradorInstance == null) {
             notFound()

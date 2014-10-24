@@ -1,0 +1,72 @@
+10-23 20:59:02 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "COMPONENTE_COMENTARIO" no encontrada
+Table "COMPONENTE_COMENTARIO" not found; SQL statement:
+alter table componente_comentario drop constraint FK_hgea6cmro9ln2imc43b9dl2ja if exists [42102-176]
+10-23 20:59:02 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "COMUNIDAD_GRUPO_USUARIOS" no encontrada
+Table "COMUNIDAD_GRUPO_USUARIOS" not found; SQL statement:
+alter table comunidad_grupo_usuarios drop constraint FK_35c8r2wv5116jwnxcy3gsb8q3 if exists [42102-176]
+10-23 20:59:02 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "COMUNIDAD_PLAN" no encontrada
+Table "COMUNIDAD_PLAN" not found; SQL statement:
+alter table comunidad_plan drop constraint FK_alc3gov9tmo3ow8nucqob8mh7 if exists [42102-176]
+10-23 20:59:02 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "GRUPO_USUARIOS_USUARIO_BASICO" no encontrada
+Table "GRUPO_USUARIOS_USUARIO_BASICO" not found; SQL statement:
+alter table grupo_usuarios_usuario_basico drop constraint FK_ipylnr4hmvy2pj0bc4m0c0n93 if exists [42102-176]
+10-23 20:59:02 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "PLAN_SITIO" no encontrada
+Table "PLAN_SITIO" not found; SQL statement:
+alter table plan_sitio drop constraint FK_7lde9hp45qmufkb4tsm14twyp if exists [42102-176]
+10-23 20:59:02 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "SITIO_ACTIVIDAD" no encontrada
+Table "SITIO_ACTIVIDAD" not found; SQL statement:
+alter table sitio_actividad drop constraint FK_qv99quco2l2q2mo209oexxsa0 if exists [42102-176]
+10-23 20:59:02 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "SITIO_SERVICIO" no encontrada
+Table "SITIO_SERVICIO" not found; SQL statement:
+alter table sitio_servicio drop constraint FK_mvcm0xcavd1tv13eh1um83625 if exists [42102-176]
+10-23 20:59:02 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "USUARIO_EMPRESARIO_SERVICIO" no encontrada
+Table "USUARIO_EMPRESARIO_SERVICIO" not found; SQL statement:
+alter table usuario_empresario_servicio drop constraint FK_no75wo992pj9olt4ua9sayovt if exists [42102-176]
+10-23 20:59:02 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "USUARIO_PROMOTOR_ACTIVIDAD" no encontrada
+Table "USUARIO_PROMOTOR_ACTIVIDAD" not found; SQL statement:
+alter table usuario_promotor_actividad drop constraint FK_pcqjfdn3cecgffr9g8l73nygl if exists [42102-176]
+10-23 21:03:10 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "COMPONENTE_COMENTARIO" no encontrada
+Table "COMPONENTE_COMENTARIO" not found; SQL statement:
+alter table componente_comentario drop constraint FK_hgea6cmro9ln2imc43b9dl2ja if exists [42102-176]
+10-23 21:03:10 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "COMUNIDAD_GRUPO_USUARIOS" no encontrada
+Table "COMUNIDAD_GRUPO_USUARIOS" not found; SQL statement:
+alter table comunidad_grupo_usuarios drop constraint FK_35c8r2wv5116jwnxcy3gsb8q3 if exists [42102-176]
+10-23 21:03:10 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "COMUNIDAD_PLAN" no encontrada
+Table "COMUNIDAD_PLAN" not found; SQL statement:
+alter table comunidad_plan drop constraint FK_alc3gov9tmo3ow8nucqob8mh7 if exists [42102-176]
+10-23 21:03:10 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "GRUPO_USUARIOS_USUARIO_BASICO" no encontrada
+Table "GRUPO_USUARIOS_USUARIO_BASICO" not found; SQL statement:
+alter table grupo_usuarios_usuario_basico drop constraint FK_ipylnr4hmvy2pj0bc4m0c0n93 if exists [42102-176]
+10-23 21:03:10 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "PLAN_SITIO" no encontrada
+Table "PLAN_SITIO" not found; SQL statement:
+alter table plan_sitio drop constraint FK_7lde9hp45qmufkb4tsm14twyp if exists [42102-176]
+10-23 21:03:10 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "SITIO_ACTIVIDAD" no encontrada
+Table "SITIO_ACTIVIDAD" not found; SQL statement:
+alter table sitio_actividad drop constraint FK_qv99quco2l2q2mo209oexxsa0 if exists [42102-176]
+10-23 21:03:10 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "SITIO_SERVICIO" no encontrada
+Table "SITIO_SERVICIO" not found; SQL statement:
+alter table sitio_servicio drop constraint FK_mvcm0xcavd1tv13eh1um83625 if exists [42102-176]
+10-23 21:03:10 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "USUARIO_EMPRESARIO_SERVICIO" no encontrada
+Table "USUARIO_EMPRESARIO_SERVICIO" not found; SQL statement:
+alter table usuario_empresario_servicio drop constraint FK_no75wo992pj9olt4ua9sayovt if exists [42102-176]
+10-23 21:03:10 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "USUARIO_PROMOTOR_ACTIVIDAD" no encontrada
+Table "USUARIO_PROMOTOR_ACTIVIDAD" not found; SQL statement:
+alter table usuario_promotor_actividad drop constraint FK_pcqjfdn3cecgffr9g8l73nygl if exists [42102-176]

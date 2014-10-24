@@ -60,7 +60,7 @@
 					<g:render template="form"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:actionSubmit class="save" action="update2" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+					<g:actionSubmit class="save"  action="update2" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 				</fieldset>
 			</g:form>
 		</div>
