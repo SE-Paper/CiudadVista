@@ -14,6 +14,10 @@ class UsuarioController {
         params.max = Math.min(max ?: 10, 100)
         respond Usuario.list(params), model:[usuarioInstanceCount: Usuario.count()]
     }
+	
+	def login = {
+		
+	}
 
     def show(Usuario usuarioInstance) {
         respond usuarioInstance

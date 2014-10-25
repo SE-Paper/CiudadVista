@@ -19,8 +19,8 @@
 			</ul>
 		</div>
 		<div class="links">
-			<a href="login.html">Login</a> <a href="register.html">Registro</a><a
-				href="#">Mi cuenta</a> <a href="checkout.html">Salir</a>
+			<g:link controller="usuario" action="login">Login</g:link> 
+				<g:link controller="usuario" action="miCuenta">Mi cuenta</g:link><g:link controller="usuario" action="logout">Salir</g:link>
 		</div>
 	</div>
 	<section class="hsecond">
