@@ -9,8 +9,6 @@ import grails.transaction.Transactional
 class UsuarioAdministradorController {
 	
 	
-	
-	
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 	
 	def index(Integer max) {
