@@ -52,7 +52,7 @@
 		<g:message code="usuarioBasico.edad.label" default="Edad" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="edad" type="number" min="0" max="110" value="${usuarioBasicoInstance.edad}" required=""/>
+	<g:field name="edad" type="number" min="0" max="110" value="${usuarioBasicoInstance?.edad}" required=""/>
 
 </div>
 
@@ -115,7 +115,7 @@
 		<g:message code="usuarioBasico.picture.label" default="Picture" />
 		
 	</label>
-	<input type="file" id="picture" name="picture" />
+	<input type="file" id="picture" name="picture" value="${usuarioBasicoInstance?.picture}"/>
 
 </div>
 
