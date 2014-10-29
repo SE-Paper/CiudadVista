@@ -15,6 +15,8 @@ class UsuarioBasico extends Usuario {
 	String ciudad 
 	Byte [] picture
 	
+	
+	
 	static constraints = {
 		nombre()
 		apellido()

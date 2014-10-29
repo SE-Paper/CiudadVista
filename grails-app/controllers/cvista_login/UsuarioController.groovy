@@ -40,7 +40,9 @@ class UsuarioController {
         }
 
         usuarioInstance.save flush:true
-
+		usuarioInstance.password = usuarioInstance.password.encodeAsMD5()
+		
+		
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'usuario.label', default: 'Usuario'), usuarioInstance.id])
@@ -67,7 +69,9 @@ class UsuarioController {
         }
 
         usuarioInstance.save flush:true
-
+		usuarioInstance.password = usuarioInstance.password.encodeAsMD5()
+		
+		
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Usuario.label', default: 'Usuario'), usuarioInstance.id])
@@ -95,7 +99,7 @@ class UsuarioController {
             '*'{ render status: NO_CONTENT }
         }
     }
-
+	
     protected void notFound() {
         request.withFormat {
             form multipartForm {

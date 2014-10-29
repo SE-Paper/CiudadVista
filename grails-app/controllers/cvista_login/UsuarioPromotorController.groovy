@@ -22,7 +22,20 @@ class UsuarioPromotorController {
     def create() {
         respond new UsuarioPromotor(params)
     }
+	
+	def index2(Integer max) {
+		params.max = Math.min(max ?: 10, 100)
+		respond UsuarioPromotor.list(params), model:[usuarioPromotorInstanceCount: UsuarioPromotor.count()]
+	}
 
+	def show2(UsuarioPromotor usuarioPromotorInstance) {
+		respond usuarioPromotorInstance
+	}
+
+	def create2() {
+		respond new UsuarioPromotor(params)
+	}
+	
     @Transactional
     def save(UsuarioPromotor usuarioPromotorInstance) {
         if (usuarioPromotorInstance == null) {
@@ -36,7 +49,8 @@ class UsuarioPromotorController {
         }
 
         usuarioPromotorInstance.save flush:true
-
+		usuarioPromotorInstance.password = usuarioPromotorInstance.password.encodeAsMD5()
+		
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'usuarioPromotor.label', default: 'UsuarioPromotor'), usuarioPromotorInstance.id])
@@ -63,7 +77,9 @@ class UsuarioPromotorController {
         }
 
         usuarioPromotorInstance.save flush:true
-
+		usuarioPromotorInstance.password = usuarioPromotorInstance.password.encodeAsMD5()
+		
+		
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'UsuarioPromotor.label', default: 'UsuarioPromotor'), usuarioPromotorInstance.id])
@@ -101,4 +117,107 @@ class UsuarioPromotorController {
             '*'{ render status: NOT_FOUND }
         }
     }
+	
+	
+	@Transactional
+	def save2(UsuarioPromotor usuarioPromotorInstance) {
+		if (usuarioPromotorInstance == null) {
+			notFound2()
+			return
+		}
+
+		if (usuarioPromotorInstance.hasErrors()) {
+			respond usuarioPromotorInstance.errors, view:'create2'
+			return
+		}
+
+		usuarioPromotorInstance.save flush:true
+		usuarioPromotorInstance.password = usuarioPromotorInstance.password.encodeAsMD5()
+		
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.created.message', args: [message(code: 'usuarioPromotor.label', default: 'UsuarioPromotor'), usuarioPromotorInstance.id])
+				redirect usuarioPromotorInstance
+			}
+			'*' { respond usuarioPromotorInstance, [status: CREATED] }
+		}
+	}
+
+	def edit2(UsuarioPromotor usuarioPromotorInstance) {
+		respond usuarioPromotorInstance
+	}
+
+	@Transactional
+	def update2(UsuarioPromotor usuarioPromotorInstance) {
+		if (usuarioPromotorInstance == null) {
+			notFound2()
+			return
+		}
+
+		if (usuarioPromotorInstance.hasErrors()) {
+			respond usuarioPromotorInstance.errors, view:'edit2'
+			return
+		}
+
+		usuarioPromotorInstance.save flush:true
+		usuarioPromotorInstance.password = usuarioPromotorInstance.password.encodeAsMD5()
+		
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.updated.message', args: [message(code: 'UsuarioPromotor.label', default: 'UsuarioPromotor'), usuarioPromotorInstance.id])
+				redirect usuarioPromotorInstance
+			}
+			'*'{ respond usuarioPromotorInstance, [status: OK] }
+		}
+	}
+
+	@Transactional
+	def delete2(UsuarioPromotor usuarioPromotorInstance) {
+
+		if (usuarioPromotorInstance == null) {
+			notFound2()
+			return
+		}
+
+		usuarioPromotorInstance.delete flush:true
+
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.deleted.message', args: [message(code: 'UsuarioPromotor.label', default: 'UsuarioPromotor'), usuarioPromotorInstance.id])
+				redirect action:"index2", method:"GET"
+			}
+			'*'{ render status: NO_CONTENT }
+		}
+	}
+	
+	def login = {
+		if (request.method == 'POST') {
+			def passwordHashed = params.password.encodeAsMD5()
+			def u = UsuarioPromotor.findByEmailAndPassword(params.email, passwordHashed)
+			if (u) {
+				session.user = u
+				redirect(controller:'UsuarioPromotor')
+			} else {
+				flash.message = "User not found"
+				redirect(controller:'main')
+			}
+		} else if (session.user) {
+			redirect(controller:'main')
+		}
+	}
+ 
+	def logout = {
+		session.invalidate()
+		redirect(controller:'main')
+	}
+	
+	protected void notFound2() {
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.not.found.message', args: [message(code: 'usuarioPromotor.label', default: 'UsuarioPromotor'), params.id])
+				redirect action: "index2", method: "GET"
+			}
+			'*'{ render status: NOT_FOUND }
+		}
+	}
 }

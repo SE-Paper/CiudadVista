@@ -101,4 +101,96 @@ class GrupoUsuariosController {
             '*'{ render status: NOT_FOUND }
         }
     }
+	
+	def index2(Integer max) {
+		params.max = Math.min(max ?: 10, 100)
+		respond GrupoUsuarios.list(params), model:[grupoUsuariosInstanceCount: GrupoUsuarios.count()]
+	}
+
+	def show2(GrupoUsuarios grupoUsuariosInstance) {
+		respond grupoUsuariosInstance
+	}
+
+	def create2() {
+		respond new GrupoUsuarios(params)
+	}
+
+	@Transactional
+	def save2(GrupoUsuarios grupoUsuariosInstance) {
+		if (grupoUsuariosInstance == null) {
+			notFound2()
+			return
+		}
+
+		if (grupoUsuariosInstance.hasErrors()) {
+			respond grupoUsuariosInstance.errors, view:'create2'
+			return
+		}
+
+		grupoUsuariosInstance.save flush:true
+
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.created.message', args: [message(code: 'grupoUsuarios.label', default: 'GrupoUsuarios'), grupoUsuariosInstance.id])
+				redirect grupoUsuariosInstance
+			}
+			'*' { respond grupoUsuariosInstance, [status: CREATED] }
+		}
+	}
+
+	def edit2(GrupoUsuarios grupoUsuariosInstance) {
+		respond grupoUsuariosInstance
+	}
+
+	@Transactional
+	def update2(GrupoUsuarios grupoUsuariosInstance) {
+		if (grupoUsuariosInstance == null) {
+			notFound2()
+			return
+		}
+
+		if (grupoUsuariosInstance.hasErrors()) {
+			respond grupoUsuariosInstance.errors, view:'edit2'
+			return
+		}
+
+		grupoUsuariosInstance.save flush:true
+
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.updated.message', args: [message(code: 'GrupoUsuarios.label', default: 'GrupoUsuarios'), grupoUsuariosInstance.id])
+				redirect grupoUsuariosInstance
+			}
+			'*'{ respond grupoUsuariosInstance, [status: OK] }
+		}
+	}
+
+	@Transactional
+	def delete2(GrupoUsuarios grupoUsuariosInstance) {
+
+		if (grupoUsuariosInstance == null) {
+			notFound2()
+			return
+		}
+
+		grupoUsuariosInstance.delete flush:true
+
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.deleted.message', args: [message(code: 'GrupoUsuarios.label', default: 'GrupoUsuarios'), grupoUsuariosInstance.id])
+				redirect action:"index2", method:"GET"
+			}
+			'*'{ render status: NO_CONTENT }
+		}
+	}
+
+	protected void notFound2() {
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.not.found.message', args: [message(code: 'grupoUsuarios.label', default: 'GrupoUsuarios'), params.id])
+				redirect action: "index2", method: "GET"
+			}
+			'*'{ render status: NOT_FOUND }
+		}
+	}
 }

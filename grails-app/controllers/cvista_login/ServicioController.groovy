@@ -101,4 +101,98 @@ class ServicioController {
             '*'{ render status: NOT_FOUND }
         }
     }
+	
+	
+	
+	def index2(Integer max) {
+		params.max = Math.min(max ?: 10, 100)
+		respond Servicio.list(params), model:[servicioInstanceCount: Servicio.count()]
+	}
+
+	def show2(Servicio servicioInstance) {
+		respond servicioInstance
+	}
+
+	def create2() {
+		respond new Servicio(params)
+	}
+
+	@Transactional
+	def save2(Servicio servicioInstance) {
+		if (servicioInstance == null) {
+			notFound2()
+			return
+		}
+
+		if (servicioInstance.hasErrors()) {
+			respond servicioInstance.errors, view:'create2'
+			return
+		}
+
+		servicioInstance.save flush:true
+
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.created.message', args: [message(code: 'servicio.label', default: 'Servicio'), servicioInstance.id])
+				redirect servicioInstance
+			}
+			'*' { respond servicioInstance, [status: CREATED] }
+		}
+	}
+
+	def edit2(Servicio servicioInstance) {
+		respond servicioInstance
+	}
+
+	@Transactional
+	def update2(Servicio servicioInstance) {
+		if (servicioInstance == null) {
+			notFound2()
+			return
+		}
+
+		if (servicioInstance.hasErrors()) {
+			respond servicioInstance.errors, view:'edit2'
+			return
+		}
+
+		servicioInstance.save flush:true
+
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.updated.message', args: [message(code: 'Servicio.label', default: 'Servicio'), servicioInstance.id])
+				redirect servicioInstance
+			}
+			'*'{ respond servicioInstance, [status: OK] }
+		}
+	}
+
+	@Transactional
+	def delete2(Servicio servicioInstance) {
+
+		if (servicioInstance == null) {
+			notFound2()
+			return
+		}
+
+		servicioInstance.delete flush:true
+
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.deleted.message', args: [message(code: 'Servicio.label', default: 'Servicio'), servicioInstance.id])
+				redirect action:"index2", method:"GET"
+			}
+			'*'{ render status: NO_CONTENT }
+		}
+	}
+
+	protected void notFound2() {
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.not.found.message', args: [message(code: 'servicio.label', default: 'Servicio'), params.id])
+				redirect action: "index2", method: "GET"
+			}
+			'*'{ render status: NOT_FOUND }
+		}
+	}
 }

@@ -23,6 +23,7 @@ class UsuarioAdministradorController {
         respond new UsuarioAdministrador(params)
     }
 
+	
     @Transactional
     def save(UsuarioAdministrador usuarioAdministradorInstance) {
         if (usuarioAdministradorInstance == null) {
@@ -36,7 +37,9 @@ class UsuarioAdministradorController {
         }
 
         usuarioAdministradorInstance.save flush:true
-
+		usuarioAdministradorInstance.password = usuarioAdministradorInstance.password.encodeAsMD5()
+		
+		
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'usuarioAdministrador.label', default: 'UsuarioAdministrador'), usuarioAdministradorInstance.id])
@@ -63,7 +66,8 @@ class UsuarioAdministradorController {
         }
 
         usuarioAdministradorInstance.save flush:true
-
+		usuarioAdministradorInstance.password = usuarioAdministradorInstance.password.encodeAsMD5()
+		
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'UsuarioAdministrador.label', default: 'UsuarioAdministrador'), usuarioAdministradorInstance.id])
@@ -92,6 +96,30 @@ class UsuarioAdministradorController {
         }
     }
 
+	def login = {
+		if (request.method == 'POST') {
+			def passwordHashed = params.password.encodeAsMD5()
+			def u = UsuarioAdministrador.findByEmailAndPassword(params.email, passwordHashed)
+			if (u) {
+				// username and password match -> log in
+				session.user = u
+				redirect(controller:'Panel', action:"main")
+			} else {
+				flash.message = "User not found"
+				redirect(url:"/admin")
+			}
+		} else if (session.user) {
+			// don't allow login while user is logged in
+			redirect(controller:'Panel', action:"main")
+		}
+	}
+	
+	 
+	def logout = {
+		session.invalidate()
+		redirect(url:"/admin")
+	}
+	
     protected void notFound() {
         request.withFormat {
             form multipartForm {
