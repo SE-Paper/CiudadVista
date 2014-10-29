@@ -10,13 +10,19 @@ class UsuarioController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
+	def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Usuario.list(params), model:[usuarioInstanceCount: Usuario.count()]
     }
 	
-	def login = {
+	
+		def login = {
 		
+		}
+ 
+	def logout = {
+		session.invalidate()
+		redirect(controller:'main')
 	}
 
     def show(Usuario usuarioInstance) {
@@ -41,7 +47,6 @@ class UsuarioController {
 
         usuarioInstance.save flush:true
 		usuarioInstance.password = usuarioInstance.password.encodeAsMD5()
-		
 		
         request.withFormat {
             form multipartForm {
@@ -70,7 +75,6 @@ class UsuarioController {
 
         usuarioInstance.save flush:true
 		usuarioInstance.password = usuarioInstance.password.encodeAsMD5()
-		
 		
         request.withFormat {
             form multipartForm {

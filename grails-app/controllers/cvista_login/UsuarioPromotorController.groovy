@@ -79,7 +79,6 @@ class UsuarioPromotorController {
         usuarioPromotorInstance.save flush:true
 		usuarioPromotorInstance.password = usuarioPromotorInstance.password.encodeAsMD5()
 		
-		
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'UsuarioPromotor.label', default: 'UsuarioPromotor'), usuarioPromotorInstance.id])
