@@ -63,26 +63,33 @@ class UsuarioBasicoController {
 
     @Transactional
     def save(UsuarioBasico usuarioBasicoInstance) {
-        if (usuarioBasicoInstance == null) {
-            notFound()
-            return
-        }
+       if (usuarioBasicoInstance == null) {
+			notFound2()
+			return
+		}
+		def file = request.getFile('picture')
+		if(!file.getContentType().equals("image/jpeg")&&!file.getContentType().equals("image/png")&&!file.getContentType().equals("image/pjpeg"))
+		{
+			flash.message = "bad type"
+		}
+		else {
+			
+			print file.getContentType()
+			usuarioBasicoInstance.picture = file.getBytes()
+			usuarioBasicoInstance.pictureType = file.getContentType()
+			usuarioBasicoInstance.pictureName = file.originalFilename			
+		}
 
-        if (usuarioBasicoInstance.hasErrors()) {
-            respond usuarioBasicoInstance.errors, view:'create'
-            return
-        }
-
-        usuarioBasicoInstance.save flush:true
-usuarioBasicoInstance.password = usuarioBasicoInstance.password.encodeAsMD5()
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'usuarioBasico.label', default: 'UsuarioBasico'), usuarioBasicoInstance.id])
-                redirect usuarioBasicoInstance
-            }
-            '*' { respond usuarioBasicoInstance, [status: CREATED] }
-        }
+		
+		def act = new UsuarioBasico()
+		act.properties = usuarioBasicoInstance.properties
+		
+		if (act.hasErrors()) {
+			respond usuarioBasicoInstance.errors, view:'create2'
+			return
+		}	
+		act.save flush:true
+		
     }
 
     def edit(UsuarioBasico usuarioBasicoInstance) {

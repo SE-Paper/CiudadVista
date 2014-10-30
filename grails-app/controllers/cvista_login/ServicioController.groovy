@@ -25,25 +25,37 @@ class ServicioController {
 
     @Transactional
     def save(Servicio servicioInstance) {
-        if (servicioInstance == null) {
-            notFound()
-            return
-        }
-
-        if (servicioInstance.hasErrors()) {
-            respond servicioInstance.errors, view:'create'
-            return
-        }
-
-        servicioInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'servicio.label', default: 'Servicio'), servicioInstance.id])
-                redirect servicioInstance
-            }
-            '*' { respond servicioInstance, [status: CREATED] }
-        }
+       if (servicioInstance == null) {
+			notFound2()
+			return
+		}
+		def file = request.getFile('picture')
+		if(file.empty) {
+			flash.message =  "no file"
+			
+		}
+		else if(!file.getContentType().equals("image/jpeg")&&!file.getContentType().equals("image/png")&&!file.getContentType().equals("image/pjpeg"))
+		{
+			flash.message = "bad type"
+		}
+		else {
+			
+			servicioInstance.picture = file.getBytes()
+			servicioInstance.pictureType = file.getContentType()
+			servicioInstance.pictureName = file.originalFilename
+			println file.getContentType()
+			println file.originalFilename
+			
+		}
+		
+		def act = new Servicio()
+		act.properties = servicioInstance.properties
+		
+		if (act.hasErrors()) {
+			respond servicioInstance.errors, view:'create2'
+			return
+		}	
+		act.save flush:true
     }
 
     def edit(Servicio servicioInstance) {

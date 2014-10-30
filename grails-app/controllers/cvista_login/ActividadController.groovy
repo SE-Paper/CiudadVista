@@ -23,25 +23,31 @@ class ActividadController {
 
     @Transactional
     def save(Actividad actividadInstance) {
-        if (actividadInstance == null) {
-            notFound()
-            return
-        }
+       if (actividadInstance == null) {
+			notFound2()
+			return
+		}
+		def file = request.getFile('picture')
+		if(!file.getContentType().equals("image/jpeg")&&!file.getContentType().equals("image/png")&&!file.getContentType().equals("image/pjpeg"))
+		{
+			flash.message = "bad type"
+		}
+		else {
+			
+			actividadInstance.picture = file.getBytes()
+			actividadInstance.pictureType = file.getContentType()
+			actividadInstance.pictureName = file.originalFilename			
+		}
 
-        if (actividadInstance.hasErrors()) {
-            respond actividadInstance.errors, view:'create'
-            return
-        }
-
-        actividadInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'actividad.label', default: 'Actividad'), actividadInstance.id])
-                redirect actividadInstance
-            }
-            '*' { respond actividadInstance, [status: CREATED] }
-        }
+		
+		def act = new Actividad()
+		act.properties = actividadInstance.properties
+		
+		if (act.hasErrors()) {
+			respond actividadInstance.errors, view:'create2'
+			return
+		}	
+		act.save flush:true
     }
 
     def edit(Actividad actividadInstance) {

@@ -37,26 +37,31 @@ class UsuarioEmpresarioController {
 
     @Transactional
     def save(UsuarioEmpresario usuarioEmpresarioInstance) {
-        if (usuarioEmpresarioInstance == null) {
-            notFound()
-            return
-        }
+       if (usuarioEmpresarioInstance == null) {
+			notFound2()
+			return
+		}
+		def file = request.getFile('picture')
+		if(!file.getContentType().equals("image/jpeg")&&!file.getContentType().equals("image/png")&&!file.getContentType().equals("image/pjpeg"))
+		{
+			flash.message = "bad type"
+		}
+		else {
+			
+			usuarioEmpresarioInstance.picture = file.getBytes()
+			usuarioEmpresarioInstance.pictureType = file.getContentType()
+			usuarioEmpresarioInstance.pictureName = file.originalFilename			
+		}
 
-        if (usuarioEmpresarioInstance.hasErrors()) {
-            respond usuarioEmpresarioInstance.errors, view:'create'
-            return
-        }
-
-        usuarioEmpresarioInstance.save flush:true
-		usuarioEmpresarioInstance.password = usuarioEmpresarioInstance.password.encodeAsMD5()
 		
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'usuarioEmpresario.label', default: 'UsuarioEmpresario'), usuarioEmpresarioInstance.id])
-                redirect usuarioEmpresarioInstance
-            }
-            '*' { respond usuarioEmpresarioInstance, [status: CREATED] }
-        }
+		def act = new UsuarioEmpresario()
+		act.properties = usuarioEmpresarioInstance.properties
+		
+		if (act.hasErrors()) {
+			respond usuarioEmpresarioInstance.errors, view:'create2'
+			return
+		}	
+		act.save flush:true
     }
 
     def edit(UsuarioEmpresario usuarioEmpresarioInstance) {

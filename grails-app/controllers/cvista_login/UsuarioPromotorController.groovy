@@ -37,26 +37,31 @@ class UsuarioPromotorController {
 	
     @Transactional
     def save(UsuarioPromotor usuarioPromotorInstance) {
-        if (usuarioPromotorInstance == null) {
-            notFound()
-            return
-        }
+       if (usuarioPromotorInstance == null) {
+			notFound2()
+			return
+		}
+		def file = request.getFile('picture')
+		if(!file.getContentType().equals("image/jpeg")&&!file.getContentType().equals("image/png")&&!file.getContentType().equals("image/pjpeg"))
+		{
+			flash.message = "bad type"
+		}
+		else {
+			
+			usuarioPromotorInstance.picture = file.getBytes()
+			usuarioPromotorInstance.pictureType = file.getContentType()
+			usuarioPromotorInstance.pictureName = file.originalFilename			
+		}
 
-        if (usuarioPromotorInstance.hasErrors()) {
-            respond usuarioPromotorInstance.errors, view:'create'
-            return
-        }
-
-        usuarioPromotorInstance.save flush:true
-		usuarioPromotorInstance.password = usuarioPromotorInstance.password.encodeAsMD5()
 		
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'usuarioPromotor.label', default: 'UsuarioPromotor'), usuarioPromotorInstance.id])
-                redirect usuarioPromotorInstance
-            }
-            '*' { respond usuarioPromotorInstance, [status: CREATED] }
-        }
+		def act = new UsuarioPromotor()
+		act.properties = usuarioPromotorInstance.properties
+		
+		if (act.hasErrors()) {
+			respond usuarioPromotorInstance.errors, view:'create2'
+			return
+		}	
+		act.save flush:true
     }
 
     def edit(UsuarioPromotor usuarioPromotorInstance) {
