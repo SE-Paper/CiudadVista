@@ -21,6 +21,10 @@ class SearchController {
 		
 	}
 	
+	def results={
+		
+	}
+	
 	
 }
 

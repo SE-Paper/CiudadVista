@@ -57,16 +57,15 @@
         <div class="right">
             <h2>Ingreso a la aplicación</h2>
 				   <g:form class="simpleform" style="width:50%;" url="[controller:'Usuario',action:'loginT']">
-				    <fieldset>
-				      <legend>Login</legend>
+
 				      <p class="info">
-				        <g:link controller="user" action="register">Sign up now!</g:link>
+				        <g:link controller="user" action="register">Ingrese sus datos de ingreso!</g:link>
 				      </p>
 				      <g:if test="${flash.message}">
 				          <div class="message">${flash.message}</div>
 				      </g:if>
 				      <p>
-				        <label for="email">Username</label>
+				        <label for="email">E-mail</label>
 				        <g:textField name="email" />
 				      </p>
 				      <p>
@@ -77,7 +76,6 @@
 				        <label>&nbsp;</label>
 				        <g:submitButton class="button" name="submitButton" value="Login" />
 				      </p>
-				    </fieldset>
 				  </g:form>
                  </div>
             
@@ -86,18 +84,6 @@
       <!--Middle Part End-->
       <div class="clear"></div>
     </div>  
-  <!--Footer Mapa-->
-  <footer id="footer">
-	    <div class="fpart-inner">
-	<!--Ver plan del día-->
-      <div class="social-part">
-          <h3>Plan del d&iacute;a</h3>
-		  <div class="column">
-		  
-		  </div>
-      </div>
-	</div>
-  </footer>
   <!--Footer Part End-->
   
   <g:render template="/common/footer" />
