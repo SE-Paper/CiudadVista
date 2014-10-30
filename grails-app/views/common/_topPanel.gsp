@@ -6,7 +6,7 @@
 	<div
 		style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;">
 		Last access : 30 May 2014 &nbsp;
-		<g:link class="btn btn-danger square-btn-adjust" controller="admin"
+		<g:link class="btn btn-danger square-btn-adjust" controller="usuarioAdministrador"
 			action="logout">Logout</g:link>
 	</div>
 </nav>

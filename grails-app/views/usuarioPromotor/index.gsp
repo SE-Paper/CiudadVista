@@ -24,6 +24,12 @@
 			<thead>
 					<tr>
 					
+						<g:sortableColumn property="email" title="${message(code: 'usuarioPromotor.email.label', default: 'Email')}" />
+					
+						<g:sortableColumn property="password" title="${message(code: 'usuarioPromotor.password.label', default: 'Password')}" />
+					
+						<g:sortableColumn property="activo" title="${message(code: 'usuarioPromotor.activo.label', default: 'Activo')}" />
+					
 						<g:sortableColumn property="nombreApellido" title="${message(code: 'usuarioPromotor.nombreApellido.label', default: 'Nombre Apellido')}" />
 					
 						<g:sortableColumn property="nombreRazonCultural" title="${message(code: 'usuarioPromotor.nombreRazonCultural.label', default: 'Nombre Razon Cultural')}" />
@@ -36,7 +42,13 @@
 				<g:each in="${usuarioPromotorInstanceList}" status="i" var="usuarioPromotorInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${usuarioPromotorInstance.id}">${fieldValue(bean: usuarioPromotorInstance, field: "nombreApellido")}</g:link></td>
+						<td><g:link action="show" id="${usuarioPromotorInstance.id}">${fieldValue(bean: usuarioPromotorInstance, field: "email")}</g:link></td>
+					
+						<td>${fieldValue(bean: usuarioPromotorInstance, field: "password")}</td>
+					
+						<td><g:formatBoolean boolean="${usuarioPromotorInstance.activo}" /></td>
+					
+						<td>${fieldValue(bean: usuarioPromotorInstance, field: "nombreApellido")}</td>
 					
 						<td>${fieldValue(bean: usuarioPromotorInstance, field: "nombreRazonCultural")}</td>
 					

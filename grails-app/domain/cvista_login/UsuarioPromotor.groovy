@@ -3,10 +3,11 @@ package cvista_login
 
 import java.util.List;
 
-class UsuarioPromotor {
+class UsuarioPromotor extends Usuario  {
 	String nombreRazonCultural;
 	String nombreApellido
 	long cedula
+	Byte [] picture
 
 
 	static hasMany=[actividades:Actividad]
@@ -19,16 +20,7 @@ class UsuarioPromotor {
 	static constraints = {
 		nombreApellido()
 		nombreRazonCultural()
-		cedula(validator:{val,instance ->
-			def userClasses = Usuario.findAllByCedula(val);
-			if(userClasses){
-				for(Usuario userClass : userClasses){
-					if(userClass.class.equals(instance.class) && instance.version == null){
-						return ['default.cedula.error']
-					}
-				}
-			}
-			return true
-		})
+		cedula(unique:true)
+		picture(nullable:true)
 	}
 }

@@ -52,7 +52,7 @@
 		<g:message code="usuarioBasico.edad.label" default="Edad" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="edad" type="number" min="0" max="110" value="0" required=""/>
+	<g:field name="edad" type="number" min="0" max="110" value="${usuarioBasicoInstance?.edad}" required=""/>
 
 </div>
 
@@ -107,6 +107,15 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="ciudad" required="" value="${usuarioBasicoInstance?.ciudad}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: usuarioBasicoInstance, field: 'picture', 'error')} ">
+	<label for="picture">
+		<g:message code="usuarioBasico.picture.label" default="Picture" />
+		
+	</label>
+	<input type="file" id="picture" name="picture" value="${usuarioBasicoInstance?.picture}"/>
 
 </div>
 

@@ -77,6 +77,13 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${actividadInstance?.picture}">
+				<li class="fieldcontain">
+					<span id="picture-label" class="property-label"><g:message code="actividad.picture.label" default="Picture" /></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${actividadInstance?.comentarios}">
 				<li class="fieldcontain">
 					<span id="comentarios-label" class="property-label"><g:message code="actividad.comentarios.label" default="Comentarios" /></span>

@@ -86,6 +86,13 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${usuarioEmpresarioInstance?.picture}">
+				<li class="fieldcontain">
+					<span id="picture-label" class="property-label"><g:message code="usuarioEmpresario.picture.label" default="Picture" /></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${usuarioEmpresarioInstance?.servicios}">
 				<li class="fieldcontain">
 					<span id="servicios-label" class="property-label"><g:message code="usuarioEmpresario.servicios.label" default="Servicios" /></span>

@@ -77,6 +77,13 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${servicioInstance?.picture}">
+				<li class="fieldcontain">
+					<span id="picture-label" class="property-label"><g:message code="servicio.picture.label" default="Picture" /></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${servicioInstance?.comentarios}">
 				<li class="fieldcontain">
 					<span id="comentarios-label" class="property-label"><g:message code="servicio.comentarios.label" default="Comentarios" /></span>

@@ -86,6 +86,31 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${sitioInstance?.picture}">
+				<li class="fieldcontain">
+					<span id="picture-label" class="property-label"><g:message code="sitio.picture.label" default="Picture" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${sitioInstance?.lat}">
+				<li class="fieldcontain">
+					<span id="lat-label" class="property-label"><g:message code="sitio.lat.label" default="Lat" /></span>
+					
+						<span class="property-value" aria-labelledby="lat-label"><g:fieldValue bean="${sitioInstance}" field="lat"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${sitioInstance?.lng}">
+				<li class="fieldcontain">
+					<span id="lng-label" class="property-label"><g:message code="sitio.lng.label" default="Lng" /></span>
+					
+						<span class="property-value" aria-labelledby="lng-label"><g:fieldValue bean="${sitioInstance}" field="lng"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${sitioInstance?.actividades}">
 				<li class="fieldcontain">
 					<span id="actividades-label" class="property-label"><g:message code="sitio.actividades.label" default="Actividades" /></span>

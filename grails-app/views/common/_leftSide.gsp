@@ -7,8 +7,8 @@
 				<ul class="nav nav-second-level">
 						<li><a href="#">Administradores<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><g:link controller="usuarioAdministrador" action="create2">Crear</g:link></li>
-							<li><g:link controller="usuarioAdministrador" action="index2">Ver lista</g:link></li>
+								<li><g:link controller="usuarioAdministrador" action="create">Crear</g:link></li>
+							<li><g:link controller="usuarioAdministrador" action="index">Ver lista</g:link></li>
 						</ul></li>
 						</ul>
 			
@@ -60,6 +60,23 @@
 
 						</ul></li>
 				</ul>
+				<ul class="nav nav-second-level">
+					<li><a href="#">Grupo de Usuarios<span class="fa arrow"></span></a>
+						<ul class="nav nav-third-level">
+							<li><g:link controller="grupoUsuarios" action="create2">Crear</g:link></li>
+							<li><g:link controller="grupoUsuarios" action="index2">Ver lista</g:link></li>
+
+						</ul></li>
+				</ul>
+				<ul class="nav nav-second-level">
+					<li><a href="#">Comunidades<span class="fa arrow"></span></a>
+						<ul class="nav nav-third-level">
+							<li><g:link controller="comunidad" action="create2">Crear</g:link></li>
+							<li><g:link controller="comunidad" action="index2">Ver lista</g:link></li>
+
+						</ul></li>
+				</ul>
+				
 				
 				</li>
 

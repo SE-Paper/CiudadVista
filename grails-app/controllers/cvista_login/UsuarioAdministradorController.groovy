@@ -1,56 +1,28 @@
 package cvista_login
 
-
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
-
 @Transactional(readOnly = true)
 class UsuarioAdministradorController {
-
+	
+	
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
-    def index(Integer max) {
+	
+	def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond UsuarioAdministrador.list(params), model:[usuarioAdministradorInstanceCount: UsuarioAdministrador.count()]
     }
-	def index2(Integer max) {
-		params.max = Math.min(max ?: 10, 100)
-		respond UsuarioAdministrador.list(params), model:[usuarioAdministradorInstanceCount: UsuarioAdministrador.count()]
-	}
+
     def show(UsuarioAdministrador usuarioAdministradorInstance) {
         respond usuarioAdministradorInstance
     }
-	
-	def show2(UsuarioAdministrador usuarioAdministradorInstance) {
-		respond usuarioAdministradorInstance
-	}
+
 
     def create() {
         respond new UsuarioAdministrador(params)
     }
-	def create2() {
-		respond new UsuarioAdministrador(params)
-	}
-	def login = {
-	}
 
-	def doLogin = {
-		def user = UsuarioAdministrador.findWhere(email:params['email'], password:params['password'])
-		session.user = user
-		session.email = params['email']
-		if (user)
-			redirect(controller:'panel',action:'main')
-		else
-			redirect(url:"/admin")
-	}
-
-	def logout = {
-		session.invalidate()
-		redirect(url:"/admin")
-	}
-
-
+	
     @Transactional
     def save(UsuarioAdministrador usuarioAdministradorInstance) {
         if (usuarioAdministradorInstance == null) {
@@ -63,10 +35,10 @@ class UsuarioAdministradorController {
             return
         }
 
+        usuarioAdministradorInstance.save flush:true
 		usuarioAdministradorInstance.password = usuarioAdministradorInstance.password.encodeAsMD5()
-		usuarioAdministradorInstance.save flush:true
-
-        request.withFormat {
+		
+		        request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'usuarioAdministrador.label', default: 'UsuarioAdministrador'), usuarioAdministradorInstance.id])
                 redirect usuarioAdministradorInstance
@@ -75,6 +47,7 @@ class UsuarioAdministradorController {
         }
     }
 
+<<<<<<< HEAD
 	@Transactional
 	def save2(UsuarioAdministrador usuarioAdministradorInstance) {
 		if (usuarioAdministradorInstance == null) {
@@ -98,14 +71,11 @@ class UsuarioAdministradorController {
 			'*' { respond usuarioAdministradorInstance, [status: CREATED] }
 		}
 	}
+=======
+>>>>>>> remotes/origin/templates
     def edit(UsuarioAdministrador usuarioAdministradorInstance) {
         respond usuarioAdministradorInstance
     }
-	
-	def edit2(UsuarioAdministrador usuarioAdministradorInstance) {
-		respond usuarioAdministradorInstance
-	}
-
 
     def update(UsuarioAdministrador usuarioAdministradorInstance) {
         if (usuarioAdministradorInstance == null) {
@@ -118,9 +88,9 @@ class UsuarioAdministradorController {
             return
         }
 
+        usuarioAdministradorInstance.save flush:true
 		usuarioAdministradorInstance.password = usuarioAdministradorInstance.password.encodeAsMD5()
-		usuarioAdministradorInstance.save flush:true
-
+		
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'UsuarioAdministrador.label', default: 'UsuarioAdministrador'), usuarioAdministradorInstance.id])
@@ -129,28 +99,7 @@ class UsuarioAdministradorController {
             '*'{ respond usuarioAdministradorInstance, [status: OK] }
         }
     }
-	def update2(UsuarioAdministrador usuarioAdministradorInstance) {
-		if (usuarioAdministradorInstance == null) {
-			notFound()
-			return
-		}
 
-		if (usuarioAdministradorInstance.hasErrors()) {
-			respond usuarioAdministradorInstance.errors, view:'edit2'
-			return
-		}
-
-		usuarioAdministradorInstance.password = usuarioAdministradorInstance.password.encodeAsMD5()
-		usuarioAdministradorInstance.save flush:true
-
-		request.withFormat {
-			form multipartForm {
-				flash.message = message(code: 'default.updated.message', args: [message(code: 'UsuarioAdministrador.label', default: 'UsuarioAdministrador'), usuarioAdministradorInstance.id])
-				redirect usuarioAdministradorInstance
-			}
-			'*'{ respond usuarioAdministradorInstance, [status: OK] }
-		}
-	}
     @Transactional
     def delete(UsuarioAdministrador usuarioAdministradorInstance) {
 
@@ -169,23 +118,31 @@ class UsuarioAdministradorController {
             '*'{ render status: NO_CONTENT }
         }
     }
-	def delete2(UsuarioAdministrador usuarioAdministradorInstance) {
-		
-				if (usuarioAdministradorInstance == null) {
-					notFound()
-					return
-				}
-		
-				usuarioAdministradorInstance.delete flush:true
-		
-				request.withFormat {
-					form multipartForm {
-						flash.message = message(code: 'default.deleted.message', args: [message(code: 'UsuarioAdministrador.label', default: 'UsuarioAdministrador'), usuarioAdministradorInstance.id])
-						redirect action:"index2", method:"GET"
-					}
-					'*'{ render status: NO_CONTENT }
-				}
+
+	def login = {
+		if (request.method == 'POST') {
+			def passwordHashed = params.password.encodeAsMD5()
+			def u = UsuarioAdministrador.findByEmailAndPassword(params.email, passwordHashed)
+			if (u) {
+				// username and password match -> log in
+				session.user = u
+				redirect(controller:'Panel', action:"main")
+			} else {
+				flash.message = "User not found"
+				redirect(url:"/admin")
 			}
+		} else if (session.user) {
+			// don't allow login while user is logged in
+			redirect(controller:'Panel', action:"main")
+		}
+	}
+	
+	 
+	def logout = {
+		session.invalidate()
+		redirect(url:"/admin")
+	}
+	
     protected void notFound() {
         request.withFormat {
             form multipartForm {
@@ -195,4 +152,7 @@ class UsuarioAdministradorController {
             '*'{ render status: NOT_FOUND }
         }
     }
+	
+
+	
 }

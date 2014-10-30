@@ -8,6 +8,10 @@ class Sitio extends Componente{
 	boolean esPublico
 	String direccion
 	String telefono
+	Byte [] picture
+	String lat
+	String lng
+	
 	
 	static hasMany=[actividades:Actividad,servicios:Servicio]
 	List actividades
@@ -22,5 +26,8 @@ class Sitio extends Componente{
 		telefono()
 		direccion()
 		esPublico()
+		picture(nullable:true)
+		lat()
+		lng()
     }
 }

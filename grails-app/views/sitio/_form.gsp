@@ -65,6 +65,33 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: sitioInstance, field: 'picture', 'error')} ">
+	<label for="picture">
+		<g:message code="sitio.picture.label" default="Picture" />
+		
+	</label>
+	<input type="file" id="picture" name="picture" />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: sitioInstance, field: 'lat', 'error')} required">
+	<label for="lat">
+		<g:message code="sitio.lat.label" default="Lat" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="lat" required="" value="${sitioInstance?.lat}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: sitioInstance, field: 'lng', 'error')} required">
+	<label for="lng">
+		<g:message code="sitio.lng.label" default="Lng" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="lng" required="" value="${sitioInstance?.lng}"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: sitioInstance, field: 'actividades', 'error')} ">
 	<label for="actividades">
 		<g:message code="sitio.actividades.label" default="Actividades" />

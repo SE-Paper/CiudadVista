@@ -5,7 +5,7 @@
 <asset:stylesheet src="bootstrap.css" />
 <asset:stylesheet src="font-awesome.css" />
 <asset:stylesheet src="morris-0.4.3.min.css" />
-<asset:stylesheet src="custom.css" />
+<asset:stylesheet src="custom2.css" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Panel_Administrador</title>
 
@@ -180,7 +180,7 @@
 	<asset:javascript src="jquery.metisMenu.js" />
 	<asset:javascript src="raphael-2.1.0.min.js" />
 	<asset:javascript src="morris.js" />
-	<asset:javascript src="custom.js" />
+	<asset:javascript src="custom2.js" />
 
 
 </body>

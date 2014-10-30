@@ -1,93 +1,165 @@
-<div id="header">
-	<div class="clearfix">
-		<ul class="navigation">
-			<li class="active"><a href="index.html">Comunidad</a></li>
-			<li><a href="about.html">Sobre el proyecto</a></li>
-		</ul>
-		<ul class="navigationLogin">
-			<li><g:link controller="Usuario" action="registro">Registro</g:link></li>
-			<li><g:link controller="Usuario" action="login">Ingreso</g:link></li>
 
-		</ul>
+<!--Header Part Start-->
+<header id="header">
+	<div class="htop">
+		<div id="language">
+			<span>Comunidad<b></b></span>
+			<ul>
+				<li><a title="verComunidad">Ver comunidad</a></li>
+				<li><a title="crearPLan">Crear Plan</a></li>
+			</ul>
+		</div>
+		<div id="currency">
+			<span>Sobre nosotros<b></b></span>
+			<ul>
+				<li><a title="sobreProyecto">Proyecto Ciudad Vista</a></li>
+				<li><a title="politicasPrivacidad">Políticas de privacidad</a>
+				</li>
+				<li><a title="desarrolladores"><b>Desarrolladores</b></a></li>
+			</ul>
+		</div>
+		<div class="links">
+			<g:link controller="usuario" action="login">Login</g:link> 
+				<g:link controller="usuario" action="miCuenta">Mi cuenta</g:link><g:link controller="usuario" action="logout">Salir</g:link>
+		</div>
 	</div>
-</div>
-<div id="searchBar">
-	<table style="width: 100%">
-		<tr>
-			<td height="75" width="120">
-				<div id="logo">
-					<img src="${resource(dir: 'images', file: 'bogota.png')}"
-						height="75" width="120">
+	<section class="hsecond">
+		<div id="logo">
+			<a href="index.html"><img height="78" width="193"
+				src="${resource(dir: 'images', file: 'asd.png')}" title="Polishop"
+				alt="Polishop" /></a>
+		</div>
+		<div id="search">
+			<div class="button-search"></div>
+			<g:form url="[controller:'Search', action:'search']" method="GET">
+				<input type="text" name="query" placeholder="Escriba aquí..."
+					value="${params.query}" />
+			</g:form>
+		</div>
+		<div class="clear"></div>
+	</section>
+	<!--Top Menu(Horizontal Categories) Start-->
+	<nav id="menu">
+		<ul>
+			<li class="home"><a title="Home" href="index.html"><span>Home</span></a></li>
+			<li>
+				<div id="search">
+					<div class="button-search"></div>
+					<input type="text" name="search" placeholder="Search" value="" />
 				</div>
-			</td>
-			<td height="80" width="130">
-				<div id="sideLogo">
-					<img src="${resource(dir: 'images', file: 'a1.png')}" height="75"
-						width="140">
-				</div>
-			</td>
-			<td width="400">
-		<!--<div id="searchT">
-					<form id="searchbox" action="../search">
-						<input id="search" type="text" placeholder="Escriba aquí">
-						<input id="submit" type="submit" value="Buscar">
-					</form>
-				</div>
-				-->
-				 <fieldset class="form">
-    				<g:form url="[controller:'Search', action:'search']" method="GET">
-       					 <div class="fieldcontain">
-        		    		<label for="query">Buscar:</label>
-          		 			 <g:textField name="query" placeholder="Escriba aquí" value="${params.query}	"/>
-        				</div>
-    				</g:form>
-				</fieldset>			
-				 
-				<!--<div id="searchT">
-					<form id="searchbox" action="Search">
-						<input id="search" type="text" placeholder="Escriba aquí" value ="${params.query}" >
-						<input id="submit" type="submit" value="Buscar">
-					</form>
-				</div>-->	</td>
-			<td width="80">
-				<div id="searchboxB">
-					<input type="image"
-						src="${resource(dir: 'images', file: 'search.gif')}"
-						alt="Búsqueda Avanzada" height="40" width="40">
-				</div>
-			</td>
-			<td width="300">
-				<div id="searchboxB">
-					<input type="image"
-						src="${resource(dir: 'images', file: 'facebook.png')}"
-						alt="Búsqueda Avanzada" height="45" width="45">
-				</div>
-				<div id="searchboxB">
-					<input type="image"
-						src="${resource(dir: 'images', file: 'youtube.png')}"
-						alt="Búsqueda Avanzada" height="45" width="45">
-				</div>
-				<div id="searchboxB">
-					<input type="image"
-						src="${resource(dir: 'images', file: 'twitter.ico')}"
-						alt="Búsqueda Avanzada" height="45" width="45">
-				</div>
-				<div id="searchboxB">
-					<input type="image"
-						src="${resource(dir: 'images', file: 'instagram.png')}"
-						alt="Búsqueda Avanzada" height="45" width="45">
-				</div>
-			</td>
-			<td>
-				<div id="submitB">
-					<input type="image"
-						src="${resource(dir: 'images', file: 'city.png')}" height="45"
-						width="45">
-				</div>
-			</td>
-
-		</tr>
-	</table>
-
-
-</div>
+			</li>
+			<li class="categories_hor"><a>Categorias</a>
+				<div>
+					<div class="column">
+						<a href="category.html">Actividades</a>
+						<div>
+							<ul>
+								<li><a href="category.html">Teatro</a></li>
+								<li><a href="category.html">Danza</a></li>
+								<li><a href="category.html">Cine</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="column">
+						<a href="category.html">Servicios</a>
+						<div>
+							<ul>
+								<li><a href="category.html">Restaurantes</a></li>
+								<li><a href="category.html">Bares</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="column">
+						<a href="category.html">Sitios</a>
+						<div>
+							<ul>
+								<li><a href="category.html">Cinemateca distrital</a></li>
+								<li><a href="category.html">Tiendas de calzado</a></li>
+								<li><a href="category.html">Parques</a></li>
+								<li><a href="category.html">Museos</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="column">
+						<a href="category.html">Planes</a>
+						<div>
+							<ul>
+								<li><a href="category.html">Parques en la ciudad</a></li>
+								<li><a href="category.html">El jardín Botánico</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="column">
+						<a href="category.html">Recorridos por la ciudad</a>
+						<div>
+							<ul>
+								<li><a href="category.html">Ciclipaseos</a></li>
+								<li><a href="category.html">Top Lugares turísticos</a></li>
+							</ul>
+						</div>
+					</div>
+				</div></li>
+			<li><a href="contact-us.html">Búsqueda Avanzada</a></li>
+		</ul>
+	</nav>
+	<!--Top Menu(Horizontal Categories) End-->
+	<!-- Mobile Menu Start-->
+	<nav id="menu" class="m-menu">
+		<span>Menu</span>
+		<ul>
+			<li class="categories_hor"><a>Categorias</a>
+				<div>
+					<div class="column">
+						<a href="category.html">Actividades</a>
+						<div>
+							<ul>
+								<li><a href="category.html">Teatro</a></li>
+								<li><a href="category.html">Danza</a></li>
+								<li><a href="category.html">Cine</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="column">
+						<a href="category.html">Servicios</a>
+						<div>
+							<ul>
+								<li><a href="category.html">Restaurantes</a></li>
+								<li><a href="category.html">Bares</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="column">
+						<a href="category.html">Sitios</a>
+						<div>
+							<ul>
+								<li><a href="category.html">Cinemateca distrital</a></li>
+								<li><a href="category.html">Tiendas de calzado</a></li>
+								<li><a href="category.html">Parques</a></li>
+								<li><a href="category.html">Museos</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="column">
+						<a href="category.html">Planes</a>
+						<div>
+							<ul>
+								<li><a href="category.html">Parques en la ciudad</a></li>
+								<li><a href="category.html">El jardín Botánico</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="column">
+						<a href="category.html">Recorridos por la ciudad</a>
+						<div>
+							<ul>
+								<li><a href="category.html">Ciclipaseos</a></li>
+								<li><a href="category.html">Top Lugares turísticos</a></li>
+							</ul>
+						</div>
+					</div>
+				</div></li>
+		</ul>
+	</nav>
+	<!-- Mobile Menu End-->
+</header>
+<!--Header Part End-->

@@ -9,6 +9,7 @@ class UsuarioEmpresario extends Usuario {
 	String matriculaMercantil;
 	String nomApRep
 	long cedula
+	Byte [] picture
 	
 	static hasMany=[servicios:Servicio]
 	List servicios
@@ -21,6 +22,7 @@ class UsuarioEmpresario extends Usuario {
 		nomApRep()
 		nombreEmpresa()
 		matriculaMercantil()
+<<<<<<< HEAD
 		cedula(validator:{val,instance ->
 			def userClasses = UsuarioEmpresario.findAllByCedula(val);
 			if(userClasses){
@@ -32,5 +34,9 @@ class UsuarioEmpresario extends Usuario {
 			}
 			return true
 		})
+=======
+		cedula(unique:true)
+		picture(nullable:true)
+>>>>>>> remotes/origin/templates
 	}
 }

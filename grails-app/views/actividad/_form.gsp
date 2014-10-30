@@ -56,6 +56,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: actividadInstance, field: 'picture', 'error')} ">
+	<label for="picture">
+		<g:message code="actividad.picture.label" default="Picture" />
+		
+	</label>
+	<input type="file" id="picture" name="picture" />
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: actividadInstance, field: 'comentarios', 'error')} ">
 	<label for="comentarios">
 		<g:message code="actividad.comentarios.label" default="Comentarios" />

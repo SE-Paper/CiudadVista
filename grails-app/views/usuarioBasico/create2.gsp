@@ -8,7 +8,7 @@
 <asset:stylesheet src="bootstrap.css" />
 <asset:stylesheet src="font-awesome.css" />
 <asset:stylesheet src="morris-0.4.3.min.css" />
-<asset:stylesheet src="custom.css" />
+<asset:stylesheet src="custom2.css" />
   		<asset:stylesheet src="application.css"/>
 		<asset:javascript src="application.js"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,34 +33,50 @@
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="panel panel-default">
 						<div class="panel-body">
-								<a href="#create-usuarioBasico" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/panel')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index2"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="create-usuarioBasico" class="content scaffold-create" role="main">
-			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<g:hasErrors bean="${usuarioBasicoInstance}">
-			<ul class="errors" role="alert">
-				<g:eachError bean="${usuarioBasicoInstance}" var="error">
-				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-				</g:eachError>
-			</ul>
-			</g:hasErrors>
-			<g:form url="[resource:usuarioBasicoInstance, action:'save']" >
-				<fieldset class="form">
-					<g:render template="form"/>
-				</fieldset>
-				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-				</fieldset>
-			</g:form>
-		</div>
+								<a href="#create-usuarioBasico" class="skip" tabindex="-1"><g:message
+										code="default.link.skip.label"
+										default="Skip to content&hellip;" /></a>
+								<div class="nav1" role="navigation">
+									<ul>
+										<li><a class="home" href="${createLink(uri: '/panel')}"><g:message
+													code="default.home.label" /></a></li>
+										<li><g:link class="list" action="index2">
+												<g:message code="default.list.label" args="[entityName]" />
+											</g:link></li>
+									</ul>
+								</div>
+								<div id="create-usuarioBasico" class="content scaffold-create"
+									role="main">
+									<h1>
+										<g:message code="default.create.label" args="[entityName]" />
+									</h1>
+									<g:if test="${flash.message}">
+										<div class="message" role="status">
+											${flash.message}
+										</div>
+									</g:if>
+									<g:hasErrors bean="${usuarioBasicoInstance}">
+										<ul class="errors" role="alert">
+											<g:eachError bean="${usuarioBasicoInstance}" var="error">
+												<li
+													<g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
+														error="${error}" /></li>
+											</g:eachError>
+										</ul>
+									</g:hasErrors>
+									<g:form url="[resource:usuarioBasicoInstance, action:'save2']"
+										enctype="multipart/form-data">
+										<fieldset class="form">
+											<g:render template="form" />
+										</fieldset>
+										<fieldset class="buttons">
+											<g:submitButton name="create" class="save"
+												value="${message(code: 'default.button.create.label', default: 'Create')}" />
+										</fieldset>
+									</g:form>
+								</div>
+
+
 							</div>
 						</div>
 					</div>
@@ -79,7 +95,8 @@
 	<asset:javascript src="jquery.metisMenu.js" />
 	<asset:javascript src="raphael-2.1.0.min.js" />
 	<asset:javascript src="morris.js" />
-	<asset:javascript src="custom.js" />
+	<asset:javascript src="custom2.js" />
 </body>
 </html>
+
 

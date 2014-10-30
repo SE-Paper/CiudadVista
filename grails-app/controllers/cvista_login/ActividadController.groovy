@@ -1,7 +1,5 @@
 package cvista_login
 
-
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -101,4 +99,96 @@ class ActividadController {
             '*'{ render status: NOT_FOUND }
         }
     }
+	
+	def index2(Integer max) {
+		params.max = Math.min(max ?: 10, 100)
+		respond Actividad.list(params), model:[actividadInstanceCount: Actividad.count()]
+	}
+
+	def show2(Actividad actividadInstance) {
+		respond actividadInstance
+	}
+
+	def create2() {
+		respond new Actividad(params)
+	}
+
+	@Transactional
+	def save2(Actividad actividadInstance) {
+		if (actividadInstance == null) {
+			notFound2()
+			return
+		}
+
+		if (actividadInstance.hasErrors()) {
+			respond actividadInstance.errors, view:'create2'
+			return
+		}
+
+		actividadInstance.save flush:true
+
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.created.message', args: [message(code: 'actividad.label', default: 'Actividad'), actividadInstance.id])
+				redirect actividadInstance
+			}
+			'*' { respond actividadInstance, [status: CREATED] }
+		}
+	}
+
+	def edit2(Actividad actividadInstance) {
+		respond actividadInstance
+	}
+
+	@Transactional
+	def update2(Actividad actividadInstance) {
+		if (actividadInstance == null) {
+			notFound2()
+			return
+		}
+
+		if (actividadInstance.hasErrors()) {
+			respond actividadInstance.errors, view:'edit2'
+			return
+		}
+
+		actividadInstance.save flush:true
+
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.updated.message', args: [message(code: 'Actividad.label', default: 'Actividad'), actividadInstance.id])
+				redirect actividadInstance
+			}
+			'*'{ respond actividadInstance, [status: OK] }
+		}
+	}
+
+	@Transactional
+	def delete2(Actividad actividadInstance) {
+
+		if (actividadInstance == null) {
+			notFound2()
+			return
+		}
+
+		actividadInstance.delete flush:true
+
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.deleted.message', args: [message(code: 'Actividad.label', default: 'Actividad'), actividadInstance.id])
+				redirect action:"index2", method:"GET"
+			}
+			'*'{ render status: NO_CONTENT }
+		}
+	}
+
+	protected void notFound2() {
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.not.found.message', args: [message(code: 'actividad.label', default: 'Actividad'), params.id])
+				redirect action: "index2", method: "GET"
+			}
+			'*'{ render status: NOT_FOUND }
+		}
+	}
 }

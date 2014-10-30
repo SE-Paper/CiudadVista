@@ -10,10 +10,20 @@ class UsuarioController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
+	def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Usuario.list(params), model:[usuarioInstanceCount: Usuario.count()]
     }
+	
+	
+		def login = {
+		
+		}
+ 
+	def logout = {
+		session.invalidate()
+		redirect(controller:'main')
+	}
 
     def show(Usuario usuarioInstance) {
         respond usuarioInstance
@@ -38,8 +48,6 @@ class UsuarioController {
         usuarioInstance.save flush:true
 		usuarioInstance.password = usuarioInstance.password.encodeAsMD5()
 		
-		
-
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'usuario.label', default: 'Usuario'), usuarioInstance.id])
@@ -68,7 +76,6 @@ class UsuarioController {
         usuarioInstance.save flush:true
 		usuarioInstance.password = usuarioInstance.password.encodeAsMD5()
 		
-		
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Usuario.label', default: 'Usuario'), usuarioInstance.id])
@@ -96,7 +103,7 @@ class UsuarioController {
             '*'{ render status: NO_CONTENT }
         }
     }
-
+	
     protected void notFound() {
         request.withFormat {
             form multipartForm {
@@ -106,15 +113,4 @@ class UsuarioController {
             '*'{ render status: NOT_FOUND }
         }
     }
-	
-	def registro =
-	{
-		
-	}
-	
-	def login =
-	{
-			
-	}
 }
-
