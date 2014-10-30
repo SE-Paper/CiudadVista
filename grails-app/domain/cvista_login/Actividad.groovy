@@ -7,6 +7,7 @@ class Actividad extends Componente {
 	Date fechaFinal
 	Byte [] picture
 
+	
 	static belogsTo = UsuarioPromotor
 
 	static constraints = {
