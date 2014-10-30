@@ -16,9 +16,48 @@ class UsuarioController {
     }
 	
 	
-		def login = {
+	def login = {
 		
+	}
+ 
+	def loginT = {
+		if (request.method == 'POST') {
+			def passwordHashed = params.password.encodeAsMD5()
+			def u = Usuario.findByEmailAndPassword(params.email, passwordHashed)
+			if (u) {
+				if(u.class == UsuarioAdministrador.class){
+					session.user = u
+					session.invalidate()
+					redirect(url:"/admin")
+				
+				}
+				if(u.class == UsuarioBasico.class){
+					session.user = u
+					redirect(controller:'UsuarioBasico')
+				}
+				
+				if(u.class == UsuarioEmpresario.class){
+					session.user = u
+					redirect(controller:'UsuarioEmpresario')
+				}
+				if(u.class == UsuarioPromotor.class){
+					session.user = u
+					redirect(controller:'UsuarioPromotor')
+				}
+				if(u.class == Usuario.class){
+					session.user = u
+					redirect(controller:'Usuario')
+				}
+				
+			} else {
+				flash.message = "User not found"
+				redirect(controller:'main')
+			}
+		} else if (session.user) {
+			// don't allow login while user is logged in
+			redirect(controller:'main')
 		}
+	}
  
 	def logout = {
 		session.invalidate()

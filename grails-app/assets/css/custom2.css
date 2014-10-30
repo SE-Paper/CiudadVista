@@ -44,6 +44,9 @@ body {
 h2 {
     color: #f00;
 }
+div h3 center{
+    color: #777;
+}
 h4 {
     padding-top:10px;
 }

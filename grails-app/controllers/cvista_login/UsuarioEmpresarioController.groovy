@@ -1,8 +1,4 @@
 package cvista_login
-<<<<<<< HEAD
-import cvista_login.Usuario;
-=======
->>>>>>> remotes/origin/templates
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -19,11 +15,7 @@ class UsuarioEmpresarioController {
     def show(UsuarioEmpresario usuarioEmpresarioInstance) {
         respond usuarioEmpresarioInstance
     }
-	
-	def show2(UsuarioEmpresario usuarioEmpresarioInstance) {
-		respond usuarioEmpresarioInstance
-	}
-	
+
     def create() {
         respond new UsuarioEmpresario(params)
     }
@@ -64,38 +56,10 @@ class UsuarioEmpresarioController {
             '*' { respond usuarioEmpresarioInstance, [status: CREATED] }
         }
     }
-	
-	def save2(UsuarioEmpresario usuarioEmpresarioInstance) {
-		if (usuarioEmpresarioInstance == null) {
-			notFound()
-			return
-		}
 
-		if (usuarioEmpresarioInstance.hasErrors()) {
-			respond usuarioEmpresarioInstance.errors, view:'create2'
-			return
-		}
-
-		usuarioEmpresarioInstance.save flush:true
-		usuarioEmpresarioInstance.password = usuarioEmpresarioInstance.password.encodeAsMD5()
-		
-		
-		request.withFormat {
-			form multipartForm {
-				flash.message = message(code: 'default.created.message', args: [message(code: 'usuarioEmpresario.label', default: 'UsuarioEmpresario'), usuarioEmpresarioInstance.id])
-				redirect usuarioEmpresarioInstance
-			}
-			'*' { respond usuarioEmpresarioInstance, [status: CREATED] }
-		}
-	}
-    
-	def edit(UsuarioEmpresario usuarioEmpresarioInstance) {
+    def edit(UsuarioEmpresario usuarioEmpresarioInstance) {
         respond usuarioEmpresarioInstance
     }
-	
-	def edit2(UsuarioEmpresario usuarioEmpresarioInstance) {
-		respond usuarioEmpresarioInstance
-	}
 
     @Transactional
     def update(UsuarioEmpresario usuarioEmpresarioInstance) {
@@ -120,24 +84,7 @@ class UsuarioEmpresarioController {
             '*'{ respond usuarioEmpresarioInstance, [status: OK] }
         }
     }
-	
-	def update2(UsuarioEmpresario usuarioEmpresarioInstance) {
-		if (usuarioEmpresarioInstance == null) {
-			notFound()
-			return
-		}
 
-		if (usuarioEmpresarioInstance.hasErrors()) {
-			respond usuarioEmpresarioInstance.errors, view:'edit'
-			return
-		}
-
-		usuarioEmpresarioInstance.save flush:true
-		usuarioEmpresarioInstance.password = usuarioEmpresarioInstance.password.encodeAsMD5()
-		
-
-<<<<<<< HEAD
-=======
 	
 	def save2(UsuarioEmpresario usuarioEmpresarioInstance) {
 		if (usuarioEmpresarioInstance == null) {
@@ -183,7 +130,6 @@ class UsuarioEmpresarioController {
 		usuarioEmpresarioInstance.password = usuarioEmpresarioInstance.password.encodeAsMD5()
 		
 		
->>>>>>> remotes/origin/templates
 		request.withFormat {
 			form multipartForm {
 				flash.message = message(code: 'default.updated.message', args: [message(code: 'UsuarioEmpresario.label', default: 'UsuarioEmpresario'), usuarioEmpresarioInstance.id])
@@ -192,10 +138,7 @@ class UsuarioEmpresarioController {
 			'*'{ respond usuarioEmpresarioInstance, [status: OK] }
 		}
 	}
-<<<<<<< HEAD
-=======
 
->>>>>>> remotes/origin/templates
     @Transactional
     def delete(UsuarioEmpresario usuarioEmpresarioInstance) {
 
@@ -214,25 +157,7 @@ class UsuarioEmpresarioController {
             '*'{ render status: NO_CONTENT }
         }
     }
-	
-	def delete2(UsuarioEmpresario usuarioEmpresarioInstance) {
-		
-				if (usuarioEmpresarioInstance == null) {
-					notFound()
-					return
-				}
-		
-				usuarioEmpresarioInstance.delete flush:true
-		
-				request.withFormat {
-					form multipartForm {
-						flash.message = message(code: 'default.deleted.message', args: [message(code: 'UsuarioEmpresario.label', default: 'UsuarioEmpresario'), usuarioEmpresarioInstance.id])
-						redirect action:"index", method:"GET"
-					}
-					'*'{ render status: NO_CONTENT }
-				}
-			}
-	
+
     protected void notFound() {
         request.withFormat {
             form multipartForm {
@@ -263,29 +188,6 @@ class UsuarioEmpresarioController {
 		}
 	}
 
-	def login = {
-		if (request.method == 'POST') {
-			def passwordHashed = params.password.encodeAsMD5()
-			def u = UsuarioEmpresario.findByEmailAndPassword(params.email, passwordHashed)
-			if (u) {
-				// username and password match -> log in
-				session.user = u
-				redirect(controller:'UsuarioEmpresario')
-			} else {
-				flash.message = "User not found"
-				redirect(controller:'main')
-			}
-		} else if (session.user) {
-			// don't allow login while user is logged in
-			redirect(controller:'main')
-		}
-	}
- 
-	def logout = {
-		session.invalidate()
-		redirect(controller:'main')
-	}
-	
 	protected void notFound2() {
 		request.withFormat {
 			form multipartForm {

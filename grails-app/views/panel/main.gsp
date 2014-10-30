@@ -23,61 +23,70 @@
 				<div class="row">
 					<div class="col-md-12">
 						<h2>Panel de administraci&oacute;n</h2>
-					</div>
-				</div>
-				<!-- /. ROW  -->
-				<hr />
-				<div class="row">
-					<div class="col-md-4 col-sm-6 col-xs-6">
-						<div class="panel panel-back noti-box">
-							<span class="icon-box bg-color-red set-icon"> <i
-								class="fa fa-envelope-o"></i>
-							</span>
-							<div class="text-box">
-								<p class="main-text">1 nueva(s)</p>
-								<p class="text-muted">Solicitud de Usuario Empresario</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 col-xs-6">
-						<div class="panel panel-back noti-box">
-							<span class="icon-box bg-color-green set-icon"> <i
-								class="fa fa-bars"></i>
-							</span>
-							<div class="text-box">
-								<p class="main-text">2 nuevo(s)</p>
-								<p class="text-muted">mensajes Con contenido ofensivo</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 col-xs-6">
-						<div class="panel panel-back noti-box">
-							<span class="icon-box bg-color-blue set-icon"> <i
-								class="fa fa-bell-o"></i>
-							</span>
-							<div class="text-box">
-								<p class="main-text">12 nueva(s)</p>
-								<p class="text-muted">actividades ofertadas</p>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- /. ROW  -->
-				<div class="row">
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<div class="panel panel-default">
-							<div class="panel-heading">Ciudad Vista te Da la bienvenida.</div>
-							<div class="panel-body">
-								<div id="morris-bar-chart">Dentro de la aplicación podras
-									gestionar y administrar los usuarios, sitios, sevicios y 
-									actividades que integra esta comunidad web. 
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="panel panel-default">
+									<div class="panel-heading">Ciudad Vista te Da la
+										bienvenida.</div>
+									<div class="panel-body">
+										<div id="morris-bar-chart">Dentro de la aplicación
+											podras gestionar y administrar los usuarios, sitios, sevicios
+											y actividades que integra esta comunidad web.</div>
 									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<!-- /. ROW  -->
+<div class="row">
+					<div class="col-md-12">
+					<h3><center>Actividad Reciente.</center></h3>
+						<div class="panel panel-default">
+							<div class="row">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<div class="col-md-4 col-sm-6 col-xs-6">
+										<div class="panel panel-back noti-box">
+											<span class="icon-box bg-color-red set-icon"> <i
+												class="fa fa-envelope-o"></i>
+											</span>
+											<div class="text-box">
+												<p class="main-text">1 nueva(s)</p>
+												<p class="text-muted">Solicitud de Usuario Empresario</p>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-6 col-xs-6">
+										<div class="panel panel-back noti-box">
+											<span class="icon-box bg-color-green set-icon"> <i
+												class="fa fa-bars"></i>
+											</span>
+											<div class="text-box">
+												<p class="main-text">3 nuevo(s)</p>
+												<p class="text-muted">mensajes de Sugerencias</p>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-6 col-xs-6">
+										<div class="panel panel-back noti-box">
+											<span class="icon-box bg-color-blue set-icon"> <i
+												class="fa fa-bell-o"></i>
+											</span>
+											<div class="text-box">
+												<p class="main-text">12 nueva(s)</p>
+												<p class="text-muted">actividades ofertadas</p>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
+					</div>
+								
 
-				</div>
+				<!-- /. ROW  -->
 				<!-- /. ROW  -->
 				<div class="row">
 					<div class="col-md-9 col-sm-9 col-xs-9">

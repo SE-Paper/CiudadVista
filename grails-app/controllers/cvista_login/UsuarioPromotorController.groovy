@@ -186,26 +186,6 @@ class UsuarioPromotorController {
 		}
 	}
 	
-	def login = {
-		if (request.method == 'POST') {
-			def passwordHashed = params.password.encodeAsMD5()
-			def u = UsuarioPromotor.findByEmailAndPassword(params.email, passwordHashed)
-			if (u) {
-				session.user = u
-				redirect(controller:'UsuarioPromotor')
-			} else {
-				flash.message = "User not found"
-				redirect(controller:'main')
-			}
-		} else if (session.user) {
-			redirect(controller:'main')
-		}
-	}
- 
-	def logout = {
-		session.invalidate()
-		redirect(controller:'main')
-	}
 	
 	protected void notFound2() {
 		request.withFormat {

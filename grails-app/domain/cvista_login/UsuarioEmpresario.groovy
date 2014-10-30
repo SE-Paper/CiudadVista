@@ -22,21 +22,7 @@ class UsuarioEmpresario extends Usuario {
 		nomApRep()
 		nombreEmpresa()
 		matriculaMercantil()
-<<<<<<< HEAD
-		cedula(validator:{val,instance ->
-			def userClasses = UsuarioEmpresario.findAllByCedula(val);
-			if(userClasses){
-				for(Usuario userClass : userClasses){
-					if(userClass.class.equals(instance.class) && instance.version == null){
-						return ['default.cedula.error']
-					}
-				}
-			}
-			return true
-		})
-=======
 		cedula(unique:true)
 		picture(nullable:true)
->>>>>>> remotes/origin/templates
 	}
 }

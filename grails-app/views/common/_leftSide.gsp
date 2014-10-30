@@ -76,13 +76,8 @@
 
 						</ul></li>
 				</ul>
-				
-				
+			
 				</li>
-
-			<li><g:link controller="panel" action="blank">
-					<i class="fa fa-square-o fa-3x"></i>
-					Página en blanco</g:link></li>
 		</ul>
 
 	</div>

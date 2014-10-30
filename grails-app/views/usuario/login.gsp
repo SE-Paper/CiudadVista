@@ -56,7 +56,7 @@
           </div>
         <div class="right">
             <h2>Ingreso a la aplicación</h2>
-				   <g:form class="simpleform" style="width:50%;" url="[controller:'UsuarioAdministrador',action:'login']">
+				   <g:form class="simpleform" style="width:50%;" url="[controller:'Usuario',action:'loginT']">
 				    <fieldset>
 				      <legend>Login</legend>
 				      <p class="info">

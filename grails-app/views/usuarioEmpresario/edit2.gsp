@@ -8,11 +8,7 @@
 <asset:stylesheet src="bootstrap.css" />
 <asset:stylesheet src="font-awesome.css" />
 <asset:stylesheet src="morris-0.4.3.min.css" />
-<<<<<<< HEAD
-<asset:stylesheet src="custom.css" />
-=======
 <asset:stylesheet src="custom2.css" />
->>>>>>> remotes/origin/templates
   		<asset:stylesheet src="application.css"/>
 		<asset:javascript src="application.js"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -34,51 +30,6 @@
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="panel panel-default">
 							<div class="panel-body">
-<<<<<<< HEAD
-
-								<a href="#edit-usuarioEmpresario" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/panel')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index2"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create2"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="edit-usuarioEmpresario" class="content scaffold-edit" role="main">
-			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<g:hasErrors bean="${usuarioEmpresarioInstance}">
-			<ul class="errors" role="alert">
-				<g:eachError bean="${usuarioEmpresarioInstance}" var="error">
-				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-				</g:eachError>
-			</ul>
-			</g:hasErrors>
-			<g:form url="[resource:usuarioEmpresarioInstance, action:'update2']" method="PUT" >
-				<g:hiddenField name="version" value="${usuarioEmpresarioInstance?.version}" />
-				<fieldset class="form">
-					<g:render template="form"/>
-				</fieldset>
-				<fieldset class="buttons">
-					<g:actionSubmit class="save" action="update2" value="${message(code: 'default.button.update.label', default: 'Update')}" />
-				</fieldset>
-			</g:form>
-		</div>
-
-
-
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- /. ROW  -->
-			</div>
-			<!-- /. PAGE INNER  -->
-		</div>
-=======
 								<a href="#edit-usuarioEmpresario" class="skip" tabindex="-1"><g:message
 										code="default.link.skip.label"
 										default="Skip to content&hellip;" /></a>
@@ -137,7 +88,6 @@
 			</div>
 			<!-- /. PAGE INNER  -->
 		</div>
->>>>>>> remotes/origin/templates
 		<!-- /. PAGE WRAPPER  -->
 	</div>
 	<!-- /. WRAPPER  -->
@@ -147,16 +97,9 @@
 	<asset:javascript src="jquery.metisMenu.js" />
 	<asset:javascript src="raphael-2.1.0.min.js" />
 	<asset:javascript src="morris.js" />
-<<<<<<< HEAD
-	<asset:javascript src="custom.js" />
-</body>
-</html>
-
-=======
 	<asset:javascript src="custom2.js" />
 </body>
 </html>
 
 
 
->>>>>>> remotes/origin/templates

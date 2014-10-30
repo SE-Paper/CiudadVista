@@ -47,36 +47,11 @@ class UsuarioAdministradorController {
         }
     }
 
-<<<<<<< HEAD
-	@Transactional
-	def save2(UsuarioAdministrador usuarioAdministradorInstance) {
-		if (usuarioAdministradorInstance == null) {
-			notFound()
-			return
-		}
-
-		if (usuarioAdministradorInstance.hasErrors()) {
-			respond usuarioAdministradorInstance.errors, view:'create2'
-			return
-		}
-
-		usuarioAdministradorInstance.password = usuarioAdministradorInstance.password.encodeAsMD5()
-		usuarioAdministradorInstance.save flush:true
-
-		request.withFormat {
-			form multipartForm {
-				flash.message = message(code: 'default.created.message', args: [message(code: 'usuarioAdministrador.label', default: 'UsuarioAdministrador'), usuarioAdministradorInstance.id])
-				redirect usuarioAdministradorInstance
-			}
-			'*' { respond usuarioAdministradorInstance, [status: CREATED] }
-		}
-	}
-=======
->>>>>>> remotes/origin/templates
     def edit(UsuarioAdministrador usuarioAdministradorInstance) {
         respond usuarioAdministradorInstance
     }
 
+    @Transactional
     def update(UsuarioAdministrador usuarioAdministradorInstance) {
         if (usuarioAdministradorInstance == null) {
             notFound()
