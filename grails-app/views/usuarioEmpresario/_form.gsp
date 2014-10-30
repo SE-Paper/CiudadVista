@@ -70,7 +70,7 @@
 		<g:message code="usuarioEmpresario.picture.label" default="Picture" />
 		
 	</label>
-	<input type="file" id="picture" name="picture" />
+	<input type="file" id="picture" name="picture"  value="${request.picture}"/>
 
 </div>
 

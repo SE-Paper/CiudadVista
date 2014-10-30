@@ -7,7 +7,7 @@ class UsuarioPromotor extends Usuario  {
 	String nombreRazonCultural;
 	String nombreApellido
 	long cedula
-	Byte [] picture
+
 
 
 	static hasMany=[actividades:Actividad]
@@ -21,6 +21,6 @@ class UsuarioPromotor extends Usuario  {
 		nombreApellido()
 		nombreRazonCultural()
 		cedula(unique:true)
-		picture(nullable:true)
+	
 	}
 }

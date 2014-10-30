@@ -9,7 +9,7 @@ class UsuarioEmpresario extends Usuario {
 	String matriculaMercantil;
 	String nomApRep
 	long cedula
-	Byte [] picture
+
 	
 	static hasMany=[servicios:Servicio]
 	List servicios
@@ -23,6 +23,6 @@ class UsuarioEmpresario extends Usuario {
 		nombreEmpresa()
 		matriculaMercantil()
 		cedula(unique:true)
-		picture(nullable:true)
+		
 	}
 }

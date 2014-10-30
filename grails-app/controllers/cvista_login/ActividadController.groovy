@@ -70,7 +70,29 @@ class ActividadController {
             '*'{ respond actividadInstance, [status: OK] }
         }
     }
+/*
+	def download(long id) {
+		Componente actividadInstance = Componente.get(id)
+		if ( actividadInstance == null) {
+			flash.message = "bad type"
+			redirect (action:'index')
+		} else {
+		
+			response.setContentType(actividadInstance.pictureType)
+			response.setHeader("Content-Disposition", "Attachment;Filename=\"${actividadInstance.pictureName}\"")
 
+			java.io.File archivo = new java.io.File("text.txt")
+			java.io.FileOutputStream output = new java.io.FileOutputStream(archivo)
+			output.write(actividadInstance.picture)
+			output.flush()
+			output.close()
+			def outputStream = response.getOutputStream()
+			outputStream << archivo.newInputStream()
+			outputStream.flush()
+			outputStream.close()
+		}
+	}
+	*/
     @Transactional
     def delete(Actividad actividadInstance) {
 
@@ -111,29 +133,48 @@ class ActividadController {
 
 	def create2() {
 		respond new Actividad(params)
+		
+		
 	}
 
 	@Transactional
 	def save2(Actividad actividadInstance) {
+		
 		if (actividadInstance == null) {
 			notFound2()
 			return
 		}
-
-		if (actividadInstance.hasErrors()) {
-			respond actividadInstance.errors, view:'create2'
-			return
+		def file = request.getFile('picture')
+		if(!file.getContentType().equals("image/jpeg")&&!file.getContentType().equals("image/png")&&!file.getContentType().equals("image/pjpeg"))
+		{
+			flash.message = "bad type"
+		}
+		else {
+			
+			actividadInstance.picture = file.getBytes()
+			actividadInstance.pictureType = file.getContentType()
+			actividadInstance.pictureName = file.originalFilename			
 		}
 
-		actividadInstance.save flush:true
-
+		
+		def act = new Actividad()
+		act.properties = actividadInstance.properties
+		
+		if (act.hasErrors()) {
+			respond actividadInstance.errors, view:'create2'
+			return
+		}	
+		act.save flush:true
+		
+	/*
 		request.withFormat {
 			form multipartForm {
 				flash.message = message(code: 'default.created.message', args: [message(code: 'actividad.label', default: 'Actividad'), actividadInstance.id])
 				redirect actividadInstance
 			}
 			'*' { respond actividadInstance, [status: CREATED] }
-		}
+		}}*/
+		redirect view: 'show2'
 	}
 
 	def edit2(Actividad actividadInstance) {

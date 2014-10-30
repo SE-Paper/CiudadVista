@@ -2,29 +2,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="utf-8" />
-<g:set var="entityName" value="${message(code: 'actividad.label', default: 'Actividad')}" />
-<title><g:message code="default.create.label" args="[entityName]" /></title>
+<g:set var="entityName"
+	value="${message(code: 'actividad.label', default: 'Actividad')}" />
+<title><g:message code="default.create.label"
+		args="[entityName]" /></title>
 <asset:stylesheet src="bootstrap.css" />
 <asset:stylesheet src="font-awesome.css" />
 <asset:stylesheet src="morris-0.4.3.min.css" />
 <asset:stylesheet src="custom2.css" />
- <asset:stylesheet src="application.css"/>
- <asset:javascript src="application.js"/>
-		
+<asset:stylesheet src="application.css" />
+<asset:javascript src="application.js" />
+
 <meta name="viewport" content="width=device-width, initial-scale=1." />
 </head>
 <body>
-<%-- Render de la barra superior--%>
-		<g:render template="/common/topPanel" />
-		<%-- Render de la barra lateral, menu de opciones--%>
-		<g:render template="/common/leftSide" />
+	<%-- Render de la barra superior--%>
+	<g:render template="/common/topPanel" />
+	<%-- Render de la barra lateral, menu de opciones--%>
+	<g:render template="/common/leftSide" />
 	<div id="wrapper">
 
 		<!-- /. NAV SIDE  -->
 		<div id="page-wrapper">
 			<div id="page-inner">
-				<div class="row">
-				</div>
+				<div class="row"></div>
 				<!-- /. ROW  -->
 				<div class="row">
 					<div class="col-md-12 col-sm-12 col-xs-12">
@@ -61,7 +62,7 @@
 											</g:eachError>
 										</ul>
 									</g:hasErrors>
-									<g:form url="[resource:actividadInstance, action:'save2']"
+									<%-- <g:form url="[resource:actividadInstance, action:'save2']"
 										enctype="multipart/form-data">
 										<fieldset class="form">
 											<g:render template="form" />
@@ -70,7 +71,20 @@
 											<g:submitButton name="create" class="save"
 												value="${message(code: 'default.button.create.label', default: 'Create')}" />
 										</fieldset>
-									</g:form>
+									</g:form> --%>
+									<g:uploadForm
+										url="[resource:actividadInstance, action:'save2']"
+										enctype="multipart/form-data">
+
+										<fieldset class="form">
+											<g:render template="form" />
+										</fieldset>
+										<fieldset class="buttons">
+											<g:submitButton name="create" class="save"
+												value="${message(code: 'default.button.create.label', default: 'Create')}" />
+										</fieldset>
+
+									</g:uploadForm>
 								</div>
 
 

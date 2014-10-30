@@ -103,7 +103,6 @@ class ServicioController {
     }
 	
 	
-	
 	def index2(Integer max) {
 		params.max = Math.min(max ?: 10, 100)
 		respond Servicio.list(params), model:[servicioInstanceCount: Servicio.count()]
@@ -119,25 +118,48 @@ class ServicioController {
 
 	@Transactional
 	def save2(Servicio servicioInstance) {
+		
 		if (servicioInstance == null) {
 			notFound2()
 			return
 		}
-
-		if (servicioInstance.hasErrors()) {
+		def file = request.getFile('picture')
+		if(file.empty) {
+			flash.message =  "no file"
+			
+		}
+		else if(!file.getContentType().equals("image/jpeg")&&!file.getContentType().equals("image/png")&&!file.getContentType().equals("image/pjpeg"))
+		{
+			flash.message = "bad type"
+		}
+		else {
+			
+			servicioInstance.picture = file.getBytes()
+			servicioInstance.pictureType = file.getContentType()
+			servicioInstance.pictureName = file.originalFilename
+			println file.getContentType()
+			println file.originalFilename
+			
+		}
+		
+		def act = new Servicio()
+		act.properties = servicioInstance.properties
+		
+		if (act.hasErrors()) {
 			respond servicioInstance.errors, view:'create2'
 			return
-		}
-
-		servicioInstance.save flush:true
-
+		}	
+		act.save flush:true
+		
+	/*
 		request.withFormat {
 			form multipartForm {
-				flash.message = message(code: 'default.created.message', args: [message(code: 'servicio.label', default: 'Servicio'), servicioInstance.id])
-				redirect servicioInstance
+				flash.message = message(code: 'default.created.message', args: [message(code: 'actividad.label', default: 'Actividad'), actividadInstance.id])
+				redirect actividadInstance
 			}
-			'*' { respond servicioInstance, [status: CREATED] }
-		}
+			'*' { respond actividadInstance, [status: CREATED] }
+		}}*/
+		redirect view: 'show2'
 	}
 
 	def edit2(Servicio servicioInstance) {

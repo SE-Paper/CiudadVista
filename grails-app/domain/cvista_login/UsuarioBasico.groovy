@@ -13,7 +13,7 @@ class UsuarioBasico extends Usuario {
 	String pais
 	String departamento
 	String ciudad 
-	Byte [] picture
+	
 	List tags
 	
 	UsuarioBasico(){
@@ -32,7 +32,7 @@ class UsuarioBasico extends Usuario {
 		pais()
 		departamento()
 		ciudad()
-		picture(nullable:true)
+		
 	}
 
 	String toString(){

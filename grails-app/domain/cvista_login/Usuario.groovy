@@ -7,7 +7,9 @@ class Usuario {
 	String email
 	String password
 	boolean activo
-
+	Byte [] picture
+	String pictureName
+	String pictureType
 
 	static constraints = {
 		id()
@@ -25,11 +27,15 @@ class Usuario {
 		})
 		password(password:true)
 		activo()
+		picture(nullable:true)
+		pictureName(nullable:true)
+		pictureType(nullable:true)
 	}
 
 
 	static mapping = {
 		tablePerHierarchy true
+		picture(length:2048*2048)
 	}
 
 

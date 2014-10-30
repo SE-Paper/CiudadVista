@@ -16,6 +16,8 @@ class UsuarioPromotorController {
         respond usuarioPromotorInstance
     }
 
+	
+	
     def create() {
         respond new UsuarioPromotor(params)
     }
@@ -117,26 +119,42 @@ class UsuarioPromotorController {
 	
 	@Transactional
 	def save2(UsuarioPromotor usuarioPromotorInstance) {
+		
 		if (usuarioPromotorInstance == null) {
 			notFound2()
 			return
 		}
+		def file = request.getFile('picture')
+		if(!file.getContentType().equals("image/jpeg")&&!file.getContentType().equals("image/png")&&!file.getContentType().equals("image/pjpeg"))
+		{
+			flash.message = "bad type"
+		}
+		else {
+			
+			usuarioPromotorInstance.picture = file.getBytes()
+			usuarioPromotorInstance.pictureType = file.getContentType()
+			usuarioPromotorInstance.pictureName = file.originalFilename			
+		}
 
-		if (usuarioPromotorInstance.hasErrors()) {
+		
+		def act = new UsuarioPromotor()
+		act.properties = usuarioPromotorInstance.properties
+		
+		if (act.hasErrors()) {
 			respond usuarioPromotorInstance.errors, view:'create2'
 			return
-		}
-
-		usuarioPromotorInstance.save flush:true
-		usuarioPromotorInstance.password = usuarioPromotorInstance.password.encodeAsMD5()
+		}	
+		act.save flush:true
 		
+	/*
 		request.withFormat {
 			form multipartForm {
-				flash.message = message(code: 'default.created.message', args: [message(code: 'usuarioPromotor.label', default: 'UsuarioPromotor'), usuarioPromotorInstance.id])
-				redirect usuarioPromotorInstance
+				flash.message = message(code: 'default.created.message', args: [message(code: 'actividad.label', default: 'Actividad'), actividadInstance.id])
+				redirect actividadInstance
 			}
-			'*' { respond usuarioPromotorInstance, [status: CREATED] }
-		}
+			'*' { respond actividadInstance, [status: CREATED] }
+		}}*/
+		redirect view: 'show2'
 	}
 
 	def edit2(UsuarioPromotor usuarioPromotorInstance) {

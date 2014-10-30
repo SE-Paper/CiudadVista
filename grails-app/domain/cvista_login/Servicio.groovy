@@ -10,7 +10,7 @@ class Servicio extends Componente{
 
 	Date fechaActivo
 	Date fechaInactivo
-	Byte [] picture
+	
 
 	
 	static belogsTo = UsuarioEmpresario
