@@ -14,6 +14,11 @@ class UsuarioBasico extends Usuario {
 	String departamento
 	String ciudad 
 	Byte [] picture
+	List tags
+	
+	UsuarioBasico(){
+		 this.tags = new ArrayList()
+	}
 	
 	
 	
